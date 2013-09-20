@@ -25,7 +25,7 @@ public abstract class CodeParser {
 	 * 调用这个方法对代码进行分析
 	 * @return 无
 	 */
-	abstract void Parser();
+	abstract void Parse();
 	
 	/**
 	 * 调用这个方法获得分析的结果
