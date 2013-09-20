@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
-class ParserResult	{
+class ParsedCode	{
+	//代码内容，可以是空格符，回车符，实际代码内容
 	public String 	codeString_;
+	//这块代码的颜色，根据不同语言语法着色
 	public Color 	codeColor_;
 }
 
@@ -31,5 +33,5 @@ public abstract class CodeParser {
 	 * 成功，返回分析完成的代码结果列表
 	 * 失败，返回null
 	 */
-	abstract ArrayList<ParserResult>	getParserResult();
+	abstract ArrayList<ParsedCode>	getParserResult();
 }
