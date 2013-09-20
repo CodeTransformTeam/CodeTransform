@@ -7,6 +7,9 @@ public class CodeTransfromApp {
 		frame_ = new CodeTransformFrame();
 	}
 	
+	/**
+	 * 运行程序
+	 */
 	public void run() {
 		frame_.setVisible(true);
 	}
