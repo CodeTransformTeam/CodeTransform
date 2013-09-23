@@ -25,7 +25,7 @@ public abstract class CodeParser {
 	 * 调用这个方法对代码进行分析
 	 * @return 无
 	 */
-	abstract void Parse();
+	abstract void parse();
 	
 	/**
 	 * 调用这个方法获得分析的结果
@@ -33,5 +33,5 @@ public abstract class CodeParser {
 	 * 成功，返回分析完成的代码结果列表
 	 * 失败，返回null
 	 */
-	abstract ArrayList<ParsedCode>	getParserResult();
+	abstract ArrayList <ParsedCode>	getParserResult();
 }

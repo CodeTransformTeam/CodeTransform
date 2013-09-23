@@ -1,0 +1,58 @@
+<?xml	version="1.0"   encoding="utf-8"?>
+<Config>
+	 <KeyWordSet>   
+		<KeyWord name="abstract" />
+		<KeyWord name="abstract" />
+		<KeyWord name="assert" />
+		<KeyWord name="boolean" />
+		<KeyWord name="break" />
+		<KeyWord name="byte" />
+		<KeyWord name="case" />
+		<KeyWord name="catch" />
+		<KeyWord name="char" />
+		<KeyWord name="class" />
+		<KeyWord name="continue" />
+		<KeyWord name="default" />
+		<KeyWord name="do" />
+		<KeyWord name="double" />
+		<KeyWord name="else" />
+		<KeyWord name="enum" />
+		<KeyWord name="extends" />
+		<KeyWord name="final" />
+		<KeyWord name="finally" />
+		<KeyWord name="float" />
+		<KeyWord name="for" />
+		<KeyWord name="if" />
+		<KeyWord name="implements" />
+		<KeyWord name="import" />
+		<KeyWord name="instanceof" />
+		<KeyWord name="int" />
+		<KeyWord name="interface" />
+		<KeyWord name="long" />
+		<KeyWord name="native" />
+		<KeyWord name="new" />
+		<KeyWord name="package" />
+		<KeyWord name="private" />
+		<KeyWord name="protected" />
+		<KeyWord name="public" />
+		<KeyWord name="return" />
+		<KeyWord name="strictfp" />
+		<KeyWord name="short" />
+		<KeyWord name="static" />
+		<KeyWord name="super" />
+		<KeyWord name="switch" />
+		<KeyWord name="synchronized" />
+		<KeyWord name="this" />
+		<KeyWord name="throw" />
+		<KeyWord name="throws" />
+		<KeyWord name="transient" />
+		<KeyWord name="try" />
+		<KeyWord name="void" />
+		<KeyWord name="volatile" />
+		<KeyWord name="while" />
+	</KeyWordSet>   
+	<ColorSet>
+		<Color name="keyword" value="#7F0055" />
+		<Color name="default" value="#000000" />
+	</ColorSet>
+</Config>

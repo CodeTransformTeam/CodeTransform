@@ -11,14 +11,16 @@ import javax.swing.border.TitledBorder;
 public class CodeTransformFrame extends JFrame implements ActionListener{
 	// 这个东西是给 序列化 校验用的
 	private static final long serialVersionUID = 1L;
-	private JPanel leftPanel = new JPanel();
-	private JPanel middlePanel = new JPanel();
-	private JPanel rightPanel = new JPanel();
-	private JButton add_button = new JButton("添加文件");
-	private JButton remove_button = new JButton("删除文件");		
-	private JButton parse_button = new JButton("转换");
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private JComboBox transformSelection = new JComboBox(new Object[]{"html5","xhtml 1.0","html 4.01"});
+	
+	private JPanel leftPanel_ = new JPanel();
+	private JPanel middlePanel_ = new JPanel();
+	private JPanel rightPanel_ = new JPanel();
+	
+	private JButton addButton_ = new JButton("添加文件");
+	private JButton removeButton_ = new JButton("删除文件");		
+	private JButton parseButton_ = new JButton("转换");
+
+	private JComboBox<String> transformSelection_ = new JComboBox<String>(new String[]{"html5","xhtml 1.0","html 4.01"});
 	
 	public CodeTransformFrame() throws Exception {
 		// 对frame进行初始化
@@ -28,42 +30,43 @@ public class CodeTransformFrame extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
-		leftPanel.add(new JTextArea(15,15));
+		leftPanel_.add(new JTextArea(15,15));
 		
-		middlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		middlePanel.add(add_button);
-		middlePanel.add(remove_button);
+		middlePanel_.setLayout(new FlowLayout(FlowLayout.CENTER));
+		middlePanel_.add(addButton_);
+		middlePanel_.add(removeButton_);
 		
 		JPanel rightTopPanel = new JPanel();
 		JPanel rightBottomPanel = new JPanel();
-		JLabel jlbTransform = new JLabel("转换为");
-		JLabel jlbSave = new JLabel("存储在");
+		
+		JLabel transformAsLabel = new JLabel("转换为");
+		JLabel saveToLabel = new JLabel("存储在");
 		
 		rightTopPanel.setBorder(new TitledBorder("选项"));
 		rightTopPanel.setLayout(new GridLayout(2,1));
-		rightTopPanel.add(jlbTransform);
-		rightTopPanel.add(transformSelection);
-		rightTopPanel.add(jlbSave);
-		rightBottomPanel.add(parse_button);
+		rightTopPanel.add(transformAsLabel);
+		rightTopPanel.add(transformSelection_);
+		rightTopPanel.add(saveToLabel);
+		rightBottomPanel.add(parseButton_);
 		
-		rightPanel.setLayout(new BorderLayout());
-		rightPanel.add(rightTopPanel,BorderLayout.NORTH);
-		rightPanel.add(rightBottomPanel,BorderLayout.SOUTH);
+		rightPanel_.setLayout(new BorderLayout());
+		rightPanel_.add(rightTopPanel,BorderLayout.NORTH);
+		rightPanel_.add(rightBottomPanel,BorderLayout.SOUTH);
 		
 		setLayout(new BorderLayout());
-		add(leftPanel,BorderLayout.WEST);
-		add(middlePanel,BorderLayout.CENTER);
-		add(rightPanel,BorderLayout.EAST);
+		add(leftPanel_,BorderLayout.WEST);
+		add(middlePanel_,BorderLayout.CENTER);
+		add(rightPanel_,BorderLayout.EAST);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// 获取以及判断源对象
 		Object object = e.getSource();
-		if (object == add_button) {
+		if (object == addButton_) {
 			actionOnAddClicked();
-		} else if (object == remove_button) {
+		} else if (object == removeButton_) {
 			actionOnRemoveClicked();
-		} else if (object == parse_button) {
+		} else if (object == parseButton_) {
 			actionOnParseClicked();
 		} else {
 			throw new InvalidParameterException();

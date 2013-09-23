@@ -1,12 +1,10 @@
 package CodeTransform;
 
-import javax.swing.JFrame;
-
-public class CodeTransfromApp{
+public class CodeTransformApp{
 
 	private CodeTransformFrame frame_;
 	
-	public CodeTransfromApp() throws Exception {
+	public CodeTransformApp() throws Exception {
 		frame_ = new CodeTransformFrame();
 	}
 	
@@ -19,7 +17,7 @@ public class CodeTransfromApp{
 	
 	public static void main(String[] args) {
 		try {
-			CodeTransfromApp app = new CodeTransfromApp();
+			CodeTransformApp app = new CodeTransformApp();
 			app.run();
 		} catch (Exception e) {
 			e.printStackTrace();
