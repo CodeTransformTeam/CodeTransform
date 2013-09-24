@@ -2,7 +2,6 @@
 <Config>
 	 <KeyWordSet>   
 		<KeyWord name="abstract" />
-		<KeyWord name="abstract" />
 		<KeyWord name="assert" />
 		<KeyWord name="boolean" />
 		<KeyWord name="break" />

@@ -8,16 +8,23 @@ import javax.xml.parsers.*;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class JavaParser extends CodeParser {
 
 	private File sourceFile_ = null;
-	private ArrayList<ParsedCode> result_ = null;
+	private ArrayList<ParsedCode> parsedResult_ = null;
 	private Node keyWordNode_ = null;
 	private Node colorNode_ = null;
-
+	
+	//xml读取部分
+	private DocumentBuilderFactory documentBuilderFactory_ = null;
+	private DocumentBuilder documentBuilder_ = null;
+	private Document document_ = null;
+	private Element rootNode_ = null;
+	
 	@Override
 	void init(File sourceFile) {
 		try {
@@ -28,18 +35,17 @@ public class JavaParser extends CodeParser {
 			}
 			
 			sourceFile_ = sourceFile;
-			result_ = new ArrayList<ParsedCode>();
+			parsedResult_ = new ArrayList<ParsedCode>();
 
-
+			//下面是初始化xml文件
 			InputStream inputStream = JavaParser.class.getResourceAsStream("/res/JavaParserConfig.xml");
-			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
-					.newInstance();
-			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.parse(inputStream);
-			Element rootNode = document.getDocumentElement();//获取根节点
+			documentBuilderFactory_ = DocumentBuilderFactory.newInstance();
+			documentBuilder_ = documentBuilderFactory_.newDocumentBuilder();
+			document_ = documentBuilder_.parse(inputStream);
+			rootNode_ = document_.getDocumentElement();//获取根节点
 			
-			NodeList nodeList = rootNode.getChildNodes();
-			rootNode.getAttributeNode("");
+			NodeList nodeList = rootNode_.getChildNodes();
+			
 			for(int i = 0; i < nodeList.getLength(); i++){
 				Node node = nodeList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
@@ -53,12 +59,14 @@ public class JavaParser extends CodeParser {
 				}
 			}
 			
-			assert(keyWordNode_ != null && colorNode_ != null);
+			if (keyWordNode_ == null || colorNode_ == null) {
+				throw new IllegalArgumentException("JavaParserConfig.xml 文件非法");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Override
 	void parse() {
 		assert (sourceFile_ != null);
@@ -67,8 +75,14 @@ public class JavaParser extends CodeParser {
 			InputStream inputStream = new FileInputStream(sourceFile_);
 			byte[] buffer = new byte[(int) sourceFile_.length()];
 			inputStream.read(buffer);
-			String string = new String(buffer);
-			System.out.println(string);
+			ArrayList<String> wordList = parseWords(buffer);
+
+			for (String string : wordList) {
+				if (isKeyWord(string)) {
+					System.out.println("key word:" + string);
+				}
+			}
+			
 			inputStream.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,14 +93,32 @@ public class JavaParser extends CodeParser {
 
 	@Override
 	ArrayList<ParsedCode> getParserResult() {
-		return result_;
+		return parsedResult_;
 	}
+	
+	boolean isKeyWord(String string){
+		NodeList nodeList = keyWordNode_.getChildNodes();
+		int length = nodeList.getLength();
+		for (int i = 0; i < length; i++) {
+			Node node = nodeList.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				NamedNodeMap nodeMap = node.getAttributes();
+				Node tmpNode = nodeMap.getNamedItem("name");
+				if (tmpNode.getTextContent().equalsIgnoreCase(string)) {
+					return true;
+				}
+			}
+
+		}
+		
+		return false;
+	}
+	
 
 	public static void main(String[] args) {
 		try {
-			assert(1 == 2);
 			JavaParser parser = new JavaParser();
-			parser.init(new File("src\\CodeTransform\\CodeParser.java"));
+			parser.init(new File("src/CodeTransform/CodeParser.java"));
 			parser.parse();
 		} catch (Exception e) {
 			e.printStackTrace();

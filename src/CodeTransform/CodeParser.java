@@ -34,4 +34,37 @@ public abstract class CodeParser {
 	 * 失败，返回null
 	 */
 	abstract ArrayList <ParsedCode>	getParserResult();
+	
+	private boolean isCharPrintable(byte ch) {
+		if (ch > 32 && ch < 127) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	protected ArrayList<String> parseWords(byte[] buffer) {
+		StringBuffer stringBuffer = new StringBuffer();
+		ArrayList<String> result = new ArrayList<String>();
+		Boolean isPrintable = false;
+		for (int i = 0; i < buffer.length; i++) {
+			boolean isCurrentPrintable = isCharPrintable(buffer[i]);
+			if (isCurrentPrintable != isPrintable) {
+				isPrintable = isCurrentPrintable;
+				if (stringBuffer.length() > 0) {
+					result.add(stringBuffer.toString());
+					//清空掉
+					stringBuffer = new StringBuffer();
+				}
+				
+			} 
+			stringBuffer.append((char)buffer[i]);
+		}
+		
+		if (stringBuffer.length() > 0) {
+			result.add(stringBuffer.toString());
+		}
+		
+		return result;
+	}
 }
