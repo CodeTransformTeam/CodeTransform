@@ -2,6 +2,7 @@ package CodeTransform;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import javax.xml.parsers.*;
@@ -11,6 +12,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class JavaParser extends CodeParser {
 
@@ -18,6 +20,7 @@ public class JavaParser extends CodeParser {
 	private ArrayList<ParsedCode> parsedResult_ = null;
 	private Node keyWordNode_ = null;
 	private Node colorNode_ = null;
+	private ArrayList<String>	keyWordList_;
 	
 	//xml读取部分
 	private DocumentBuilderFactory documentBuilderFactory_ = null;
@@ -37,31 +40,8 @@ public class JavaParser extends CodeParser {
 			sourceFile_ = sourceFile;
 			parsedResult_ = new ArrayList<ParsedCode>();
 
-			//下面是初始化xml文件
-			InputStream inputStream = JavaParser.class.getResourceAsStream("/res/JavaParserConfig.xml");
-			documentBuilderFactory_ = DocumentBuilderFactory.newInstance();
-			documentBuilder_ = documentBuilderFactory_.newDocumentBuilder();
-			document_ = documentBuilder_.parse(inputStream);
-			rootNode_ = document_.getDocumentElement();//获取根节点
+			initXmlConfig();
 			
-			NodeList nodeList = rootNode_.getChildNodes();
-			
-			for(int i = 0; i < nodeList.getLength(); i++){
-				Node node = nodeList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					if (node.getNodeName() == "KeyWordSet") {
-						keyWordNode_ = node;
-					} else if (node.getNodeName() == "ColorSet") {
-						colorNode_ = node;
-					} else {
-						System.out.println("---" + node.getNodeName());
-					}
-				}
-			}
-			
-			if (keyWordNode_ == null || colorNode_ == null) {
-				throw new IllegalArgumentException("JavaParserConfig.xml 文件非法");
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -94,6 +74,34 @@ public class JavaParser extends CodeParser {
 	@Override
 	ArrayList<ParsedCode> getParserResult() {
 		return parsedResult_;
+	}
+	
+	void initXmlConfig() throws ParserConfigurationException, SAXException, IOException {
+		//下面是初始化xml文件
+		InputStream inputStream = JavaParser.class.getResourceAsStream("/res/JavaParserConfig.xml");
+		documentBuilderFactory_ = DocumentBuilderFactory.newInstance();
+		documentBuilder_ = documentBuilderFactory_.newDocumentBuilder();
+		document_ = documentBuilder_.parse(inputStream);
+		rootNode_ = document_.getDocumentElement();//获取根节点
+		
+		NodeList nodeList = rootNode_.getChildNodes();
+		
+		for(int i = 0; i < nodeList.getLength(); i++){
+			Node node = nodeList.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				if (node.getNodeName() == "KeyWordSet") {
+					keyWordNode_ = node;
+				} else if (node.getNodeName() == "ColorSet") {
+					colorNode_ = node;
+				} else {
+					System.out.println("---" + node.getNodeName());
+				}
+			}
+		}
+		
+		if (keyWordNode_ == null || colorNode_ == null) {
+			throw new IllegalArgumentException("JavaParserConfig.xml 文件非法");
+		}
 	}
 	
 	boolean isKeyWord(String string){
