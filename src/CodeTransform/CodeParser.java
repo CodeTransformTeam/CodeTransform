@@ -43,20 +43,25 @@ public abstract class CodeParser {
 		return false;
 	}
 	
-	protected ArrayList<String> parseWords(byte[] buffer) {
+	/*
+	 * 这个方法，将buffer里面的单词分开，
+	 * 可打印的一堆，不可打印的一堆
+	 * 例如 "abc+-\r\ndef\t\tgh"分成
+	 * "abc+-"、"\r\n"、"\t\t"、"gh"
+	 */
+	protected ArrayList<String> parsePrintableWords(byte[] buffer) {
 		StringBuffer stringBuffer = new StringBuffer();
 		ArrayList<String> result = new ArrayList<String>();
-		Boolean isPrintable = false;
+		Boolean stringPrintable = false;
 		for (int i = 0; i < buffer.length; i++) {
-			boolean isCurrentPrintable = isCharPrintable(buffer[i]);
-			if (isCurrentPrintable != isPrintable) {
-				isPrintable = isCurrentPrintable;
+			boolean charPrintable = isCharPrintable(buffer[i]);
+			if (charPrintable != stringPrintable) {
+				stringPrintable = charPrintable;
 				if (stringBuffer.length() > 0) {
 					result.add(stringBuffer.toString());
 					//清空掉
 					stringBuffer = new StringBuffer();
 				}
-				
 			} 
 			stringBuffer.append((char)buffer[i]);
 		}

@@ -1,3 +1,13 @@
+/*模块名称: Java代码分析
+ *主要功能：
+ *1，划分单词以及符号
+ *2，确定每个关键字颜色
+ *3，确定注释块并上色
+ *		包括行注释，块注释，文档注释
+ *4，确定字符串块并上色
+ *5，提供颜色设置功能
+ */
+
 package CodeTransform;
 
 import java.awt.Color;
@@ -7,7 +17,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import javax.xml.parsers.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -16,8 +25,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class JavaParser extends CodeParser {
+enum CodeBlock {
+	CodeBlockKeyWord, // 关键字
+	CodeBlockLineComment, // 单行注释
+	CodeBlockMultiLineComment, // 多行注释
+	CodeBlockDocumentComment, // 文档注释，类似 /** 注释内容 */
+	CodeBlockString, // 字符串内容，就是 "这种"
+	CodeBlockDefault // 默认块
+}
 
+public class JavaParser extends CodeParser {
 	private File sourceFile_ = null;
 	private ArrayList<ParsedCode> parsedResult_ = null;
 	private Node keyWordNode_ = null;
@@ -33,19 +50,21 @@ public class JavaParser extends CodeParser {
 
 	@Override
 	void init(File sourceFile) {
+		if (sourceFile.exists() == false) {
+			System.err.println("找不到文件 " + sourceFile.getAbsolutePath());
+			return;
+		}
+		
 		try {
-
-			if (sourceFile.exists() == false) {
-				System.err.println("找不到文件 " + sourceFile.getAbsolutePath());
-				return;
-			}
-
 			sourceFile_ = sourceFile;
 			keyWordList_ = new ArrayList<String>();
 			colorMap_ = new HashMap<String, Color>();
 
 			initXmlConfig();
-
+			//必须先初始化xml
+			initKeyWordList();
+			initHashMap();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -60,7 +79,7 @@ public class JavaParser extends CodeParser {
 			InputStream inputStream = new FileInputStream(sourceFile_);
 			byte[] buffer = new byte[(int) sourceFile_.length()];
 			inputStream.read(buffer);
-			ArrayList<String> wordList = parseWords(buffer);
+			ArrayList<String> wordList = parsePrintableWords(buffer);
 
 			for (String string : wordList) {
 				ParsedCode parsedCode = new ParsedCode();
@@ -82,6 +101,43 @@ public class JavaParser extends CodeParser {
 	@Override
 	ArrayList<ParsedCode> getParserResult() {
 		return parsedResult_;
+	}
+
+	void initKeyWordList() {
+		// 这里初始化关键字列表
+		NodeList keyWordNodeList = keyWordNode_.getChildNodes();
+		int length = keyWordNodeList.getLength();
+		for (int i = 0; i < length; i++) {
+			Node node = keyWordNodeList.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				NamedNodeMap nodeMap = node.getAttributes();
+				Node tmpNode = nodeMap.getNamedItem("name");
+				String keyWord = tmpNode.getTextContent();
+				if (keyWord.length() > 0) {
+					this.keyWordList_.add(keyWord);
+				}
+			}
+		}
+	}
+
+	void initHashMap() {
+		// 这里初始化颜色哈希表
+		NodeList colorNodeList = colorNode_.getChildNodes();
+		int colorListLength = colorNodeList.getLength();
+		for (int i = 0; i < colorListLength; i++) {
+			Node node = colorNodeList.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				NamedNodeMap nodeMap = node.getAttributes();
+
+				Node tmpNode = nodeMap.getNamedItem("name");
+				String colorKey = tmpNode.getTextContent();
+
+				tmpNode = nodeMap.getNamedItem("value");
+				String colorValueString = tmpNode.getTextContent();
+				Color color = ColorBuilder.ColorFromString(colorValueString);
+				colorMap_.put(colorKey, color);
+			}
+		}
 	}
 
 	void initXmlConfig() throws ParserConfigurationException, SAXException,
@@ -111,44 +167,6 @@ public class JavaParser extends CodeParser {
 
 		if (keyWordNode_ == null || colorNode_ == null) {
 			throw new IllegalArgumentException("JavaParserConfig.xml 文件非法");
-		}
-
-		{
-			// 这里初始化关键字列表
-			NodeList keyWordNodeList = keyWordNode_.getChildNodes();
-			int length = keyWordNodeList.getLength();
-			for (int i = 0; i < length; i++) {
-				Node node = keyWordNodeList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					NamedNodeMap nodeMap = node.getAttributes();
-					Node tmpNode = nodeMap.getNamedItem("name");
-					String keyWord = tmpNode.getTextContent();
-					if (keyWord.length() > 0) {
-						this.keyWordList_.add(keyWord);
-					}
-				}
-			}
-		}
-
-		{
-			// 这里初始化颜色哈希表
-			NodeList colorNodeList = colorNode_.getChildNodes();
-			int colorListLength = colorNodeList.getLength();
-			for (int i = 0; i < colorListLength; i++) {
-				Node node = colorNodeList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					NamedNodeMap nodeMap = node.getAttributes();
-
-					Node tmpNode = nodeMap.getNamedItem("name");
-					String colorKey = tmpNode.getTextContent();
-
-					tmpNode = nodeMap.getNamedItem("value");
-					String colorValueString = tmpNode.getTextContent();
-					Color color = ColorBuilder
-							.ColorFromString(colorValueString);
-					colorMap_.put(colorKey, color);
-				}
-			}
 		}
 	}
 

@@ -17,6 +17,7 @@
 		<KeyWord name="else" />
 		<KeyWord name="enum" />
 		<KeyWord name="extends" />
+		<KeyWord name="false" />
 		<KeyWord name="final" />
 		<KeyWord name="finally" />
 		<KeyWord name="float" />
@@ -30,6 +31,7 @@
 		<KeyWord name="long" />
 		<KeyWord name="native" />
 		<KeyWord name="new" />
+		<KeyWord name="null" />
 		<KeyWord name="package" />
 		<KeyWord name="private" />
 		<KeyWord name="protected" />
@@ -45,13 +47,19 @@
 		<KeyWord name="throw" />
 		<KeyWord name="throws" />
 		<KeyWord name="transient" />
+		<KeyWord name="true" />
 		<KeyWord name="try" />
 		<KeyWord name="void" />
 		<KeyWord name="volatile" />
 		<KeyWord name="while" />
 	</KeyWordSet>   
 	<ColorSet>
-		<Color name="keyword" value="#7F0055" />
-		<Color name="default" value="#000000" />
+		<Color name="KeyWord" value="#7F0055" />
+		<Color name="LineComment" value="#000000" />
+		<Color name="LineComment" value="#3F7F5F" />
+		<Color name="MultiLineComment" value="#3F7F5F" />
+		<Color name="DocumentComment" value="#0000C0" />
+		<Color name="String" value="#0000C0" />
+		<Color name="Default" value="#000000" />
 	</ColorSet>
 </Config>
