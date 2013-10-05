@@ -5,19 +5,17 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.security.InvalidParameterException;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class filePanel extends JPanel implements ActionListener{
+public class filePanel extends JPanel implements   ActionListener{
 	/**
 	 * 这个东西是给 序列化 校验用的
 	 */
@@ -67,14 +65,46 @@ public class filePanel extends JPanel implements ActionListener{
 			String fileAbsolutePath = file.getSelectedFile().toString();
 			String fileDirectory = file.getCurrentDirectory().toString()+"\\";
 			String fileName = fileAbsolutePath.replace(fileDirectory,"");
-//			System.out.println(fileName);
-			((DefaultListModel<String>) model).addElement(fileName);
-			
+			if(model.isEmpty()) {
+				((DefaultListModel<String>) model).addElement(fileName);
+			}
+			else {
+//				System.out.println(fileName);
+				if(!fileExist(fileName)) {
+					//如果文件名没有重复
+					((DefaultListModel<String>) model).addElement(fileName);
+				}
+				else {
+					//如果文件名有重复
+					JOptionPane.showMessageDialog(null,"已选");
+				}
+			}
 		}
+	}
+	private boolean fileExist(String fileName) {
+		// TODO Auto-generated method stub
+		for(int i=0 ; i<model.getSize(); i++) {
+			if(fileName.equals(model.get(i))) {
+				return true;
+			}
+		}
+		return false;
 	}
 	private void actionOnRemoveClicked() {
 		// TODO Auto-generated method stub
-		
+		if(!list_.isSelectionEmpty()) {
+			//如果列表中有选项被选中
+			int index = list_.getSelectedIndex();
+			model.remove(index);
+		}
 	}
+	
+	public boolean isFileAdded() {
+		// TODO Auto-generated method stub
+		if(model.isEmpty()) return false;
+		return true;
+	}
+	
+	
 }
 

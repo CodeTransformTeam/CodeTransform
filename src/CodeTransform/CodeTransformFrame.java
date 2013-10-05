@@ -63,6 +63,14 @@ public class CodeTransformFrame extends JFrame implements ActionListener{
 	}
 	private void actionOnParseClicked() {
 		// 点击转换按钮
-		
+		if(leftPanel_.isFileAdded()){
+			//如果文件已经添加
+			
+			
+		}
+		else {
+			//如果列表中没有文件，则利用文件对话框提醒
+			JOptionPane.showMessageDialog(null, "请添加文件");
+		}
 	}
 }
