@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -22,20 +23,21 @@ public class filePanel extends JPanel implements ActionListener{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JList<String> list_;
+	private ArrayList<String> filePath = new ArrayList<String>();
 	private JButton addButton_ = new JButton("添加文件");
 	private JButton removeButton_ = new JButton("删除文件");	
 	private JPanel rightPanel_ = new JPanel();
 	private JPanel leftPanel_ = new JPanel();
-	private JLabel tips = new JLabel("<html><br><br><br><br>注意：请选择以.c或<br>.java为后缀的文件</html>");
-	private DefaultListModel<String> model = new DefaultListModel<String>();
-	private String fileName;
+	private JLabel tips_ = new JLabel("<html><br><br><br><br>注意：请选择以.c或<br>.java为后缀的文件</html>");
+	private DefaultListModel<String> model_ = new DefaultListModel<String>();
+	private String fileName_;
 	public filePanel(){
-		list_ = new JList<String>(model);
+		list_ = new JList<String>(model_);
 		JScrollPane scrollPane = new JScrollPane(list_);
 		scrollPane.setPreferredSize(new Dimension(180, 250));
 		leftPanel_.add(scrollPane);
 		rightPanel_.setPreferredSize(new Dimension(120,40));
-		rightPanel_.add(tips);
+		rightPanel_.add(tips_);
 		rightPanel_.add(addButton_);
 		rightPanel_.add(removeButton_);
 		
@@ -62,32 +64,38 @@ public class filePanel extends JPanel implements ActionListener{
 		}	
 	}
 	private void actionOnAddClicked() {
-		// 点击“添加”按钮
+		// 点击“添加”按钮，在添加过程中可进行多个文件的选择
 		JFileChooser file = new JFileChooser();
+		file.setMultiSelectionEnabled(true);
 		if(file.showOpenDialog(null)==JFileChooser.APPROVE_OPTION){
-			String fileAbsolutePath = file.getSelectedFile().toString();
-			String filePreviousDirectory = file.getCurrentDirectory().toString()+"\\";
-			setFileName(fileAbsolutePath.replace(filePreviousDirectory,""));
-			if(!fileExist(fileName)) {
-				//如果文件名没有重复
-				((DefaultListModel<String>) model).addElement(fileName);
-				/**
-				 * 以下注释部分为获取文件的类型
-				 * */
-//				File temp = new File(fileAbsolutePath);
-//				String fileTypeName = file.getTypeDescription(temp);
-//				System.out.println(fileTypeName);
-			}
-			else {
-				//如果文件名有重复
-				JOptionPane.showMessageDialog(null,"已选");
+			for(int i=0;i<file.getSelectedFiles().length;i++) {
+				File[] temp = file.getSelectedFiles();
+				String fileAbsolutePath = temp[i].toString();
+				String filePreviousDirectory = file.getCurrentDirectory().toString()+"\\";
+				setFileName(fileAbsolutePath.replace(filePreviousDirectory,""));
+				if(!fileExist(fileName_)) {
+					//如果文件名没有重复
+					model_.addElement(fileName_);
+					// 将每个文件的路径存入ArrayList类中
+					filePath.add(fileAbsolutePath);
+				}
+				else {
+					//如果文件名有重复
+					JOptionPane.showMessageDialog(null,fileName_+"已选");
+				}
 			}
 		}
 	}
-	private boolean fileExist(String fileName) {
+	
+	public ArrayList<String> getFilePath() {
+		// 获取每个文件的路径
+		return filePath;
+	}
+	
+	private boolean fileExist(String fileName_) {
 		// 判断选中的文件是否已经在列表中
-		for(int i=0 ; i<model.getSize(); i++) {
-			if(fileName.equals(model.get(i))) {
+		for(int i=0 ; i<model_.getSize(); i++) {
+			if(fileName_.equals(model_.get(i))) {
 				return true;
 			}
 		}
@@ -98,26 +106,28 @@ public class filePanel extends JPanel implements ActionListener{
 		if(!list_.isSelectionEmpty()) {
 			//如果列表中有选项被选中
 			int index = list_.getSelectedIndex();
-			model.remove(index);
+			model_.remove(index);
 		}
 	}
 	
-	public void setFileName(String fileName) {
+	public void setFileName(String fileName_) {
 		// 设置文件的名字
-		this.fileName = fileName;
+		this.fileName_ = fileName_;
 	}
 		
 	public boolean isFileAdded() {
 		// 判断文件是否已经被添加
-		if(model.isEmpty()) return false;
+		if(model_.isEmpty()) return false;
 		return true;
 	}
 	
 	public String[] getList() {
-		// 将文件列表复制到一个数组中，方便以后调用
-		String[] array = new String[model.getSize()];
-		model.copyInto(array);
+		// 将文件名列表复制到一个数组中，方便以后调用
+		String[] array = new String[model_.getSize()];
+		model_.copyInto(array);
 		return array;
 	}
+	
+	
 }
 

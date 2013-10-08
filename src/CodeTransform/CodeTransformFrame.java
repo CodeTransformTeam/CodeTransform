@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -49,26 +50,25 @@ public class CodeTransformFrame extends JFrame implements ActionListener{
 		add(leftPanel_,BorderLayout.WEST);
 		add(rightPanel_,BorderLayout.EAST);
 		
-		parseButton_.addActionListener(this);
 		choosePathButton_.addActionListener(this);
+		parseButton_.addActionListener(this);
 	}
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Object object = e.getSource();
-		if (object == parseButton_) {
-			actionOnParseClicked();
-		} 
-		else if (object == choosePathButton_){
+		if (object == choosePathButton_) {
 			actionOnChooseClicked();
+		} 
+		else if (object == parseButton_){
+			actionOnParseClicked();
 		}
 		else {
 			throw new InvalidParameterException();
 		}
 	}
-	
+
 	private void actionOnParseClicked() {
 		// 点击“转换”按钮
 		if(leftPanel_.isFileAdded()){
@@ -77,11 +77,14 @@ public class CodeTransformFrame extends JFrame implements ActionListener{
 			 * 先判断是否已经选择了存储路径，如果没有选择，则为默认路径
 			 * 再根据下列代码所获取的文件列表信息进行相应的转换操作。
 			 */
-			// 获取文件列表
-			String[] array = leftPanel_.getList();
-			for(int i=0;i<leftPanel_.getList().length;i++) {
-				System.out.println(array[i]);
+			// 获取文件的路径
+			ArrayList<String> array = leftPanel_.getFilePath();
+			for(int i=0;i<array.size();i++) {
+				System.out.println(array.get(i));
 			}
+			
+			// 获取使用者选择的转换的类型
+			transformSelection_.getSelectedItem();
 			
 		}
 		else {
