@@ -5,10 +5,19 @@ import java.io.File;
 import java.util.ArrayList;
 
 class ParsedCode	{
+	@Override
+	public String toString() {
+		String s1 = codeString_;
+		s1 += ":";
+		s1 += codeColor_.toString();
+		return s1;
+		//return codeString_ + ":" +  codeColor_.toString();
+	}
 	//代码内容，可以是空格符，回车符，实际代码内容
 	public String 	codeString_;
 	//这块代码的颜色，根据不同语言语法着色
 	public Color 	codeColor_;
+	
 }
 
 public abstract class CodeParser {

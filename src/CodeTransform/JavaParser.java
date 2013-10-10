@@ -54,17 +54,17 @@ public class JavaParser extends CodeParser {
 			System.err.println("找不到文件 " + sourceFile.getAbsolutePath());
 			return;
 		}
-		
+
 		try {
 			sourceFile_ = sourceFile;
 			keyWordList_ = new ArrayList<String>();
 			colorMap_ = new HashMap<String, Color>();
 
 			initXmlConfig();
-			//必须先初始化xml
+			// 必须先初始化xml
 			initKeyWordList();
 			initHashMap();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -79,15 +79,20 @@ public class JavaParser extends CodeParser {
 			InputStream inputStream = new FileInputStream(sourceFile_);
 			byte[] buffer = new byte[(int) sourceFile_.length()];
 			inputStream.read(buffer);
-			ArrayList<String> wordList = parsePrintableWords(buffer);
+			ArrayList<String> wordArrayList = parsePrintableWords(buffer);
 
-			for (String string : wordList) {
-				ParsedCode parsedCode = new ParsedCode();
-				parsedCode.codeString_ = string;
-				if (isKeyWord(string)) {
-					parsedCode.codeColor_ = this.colorMap_.get("keyword");
+			for (int i = 0; i < wordArrayList.size(); i++) {
+				String wordString = wordArrayList.get(i);
+
+				if (isKeyWord(wordString)) {
+					// 关键字块
+					i = parseKeyWord(wordArrayList, i);
+					
+				} else if (wordString.indexOf("//") >= 0) {
+					i = parseLineComment(wordArrayList, i);
+
 				} else {
-					parsedCode.codeColor_ = this.colorMap_.get("default");
+					i = parseDefault(wordArrayList, i);
 				}
 			}
 
@@ -96,6 +101,58 @@ public class JavaParser extends CodeParser {
 			e.printStackTrace();
 		}
 
+	}
+
+	private int parseKeyWord(ArrayList<String> wordArrayList, int i) {
+		//关键字
+		String wordString = wordArrayList.get(i);
+		ParsedCode parsedCode = new ParsedCode();
+		parsedCode.codeString_ = wordString;
+		parsedCode.codeColor_ = this.colorMap_.get("KeyWord");
+		parsedResult_.add(parsedCode);
+		return i;
+	}
+
+	private int parseLineComment(ArrayList<String> wordArrayList, int i) {
+		// 注释块1
+		String wordString = wordArrayList.get(i);
+		ParsedCode parsedCode = new ParsedCode();
+		parsedCode.codeString_ = wordString;
+
+		int beginIndex = wordString.indexOf("//");
+		String commentString = wordString.substring(beginIndex);
+		if (beginIndex > 0) {
+			// 注释不是在单词第一个字母
+			String leftString = wordString.substring(0, beginIndex);
+			wordArrayList.set(i, leftString);
+			wordArrayList.add(i + 1, commentString);
+			
+			//简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
+			i--;
+		} else {
+			parsedCode.codeColor_ = this.colorMap_.get("LineComment");
+			parsedResult_.add(parsedCode);
+			// 接下来都是注释内容
+			while (wordString.indexOf('\n') < 0) {
+				wordString = wordArrayList.get(++i);
+				parsedCode = new ParsedCode();
+				parsedCode.codeString_ = wordString;
+				parsedCode.codeColor_ = this.colorMap_.get("LineComment");
+				parsedResult_.add(parsedCode);
+			}
+		}
+
+		return i;
+	}
+
+	private int parseDefault(ArrayList<String> wordArrayList, int i) {
+		// 普通块
+		String wordString = wordArrayList.get(i);
+		ParsedCode parsedCode = new ParsedCode();
+		parsedCode.codeString_ = wordString;
+		parsedCode.codeColor_ = this.colorMap_.get("Default");
+		parsedResult_.add(parsedCode);
+		return i;
 	}
 
 	@Override
@@ -183,8 +240,12 @@ public class JavaParser extends CodeParser {
 	public static void main(String[] args) {
 		try {
 			JavaParser parser = new JavaParser();
-			parser.init(new File("src/CodeTransform/CodeParser.java"));
+			parser.init(new File("temp/javatest.java"));
 			parser.parse();
+			ArrayList<ParsedCode> resultArrayList = parser.getParserResult();
+			for (int i = 0; i < resultArrayList.size(); i++) {
+				System.out.println("i = " + i + ": ---------------------【" + resultArrayList.get(i) + "】----------------");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
