@@ -1,80 +1,76 @@
 package CodeTransform;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.security.InvalidParameterException;
+import java.io.File;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.event.TreeExpansionEvent;
+import javax.swing.event.TreeExpansionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 
-public class filePanel extends JPanel implements ActionListener{
+
+public class filePanel extends JPanel implements TreeExpansionListener{
 	/**
 	 * 这个东西是给 序列化 校验用的
 	 */
 	private static final long serialVersionUID = 1L;
-	private JList<String> list_;
-	private JButton addButton_ = new JButton("添加文件");
-	private JButton removeButton_ = new JButton("删除文件");	
-	private JPanel rightPanel_ = new JPanel();
 	private JPanel leftPanel_ = new JPanel();
-	private DefaultListModel<String> model = new DefaultListModel<String>();
+	private JPanel rightPanel_ = new JPanel();
+	private JTree root;
+	private DefaultMutableTreeNode treeNode,selectNode;
+	private String ROOT_NAME = "我的电脑";
 	public filePanel(){
-		list_ = new JList<String>(model);
-		JScrollPane scrollPane = new JScrollPane(list_);
-		scrollPane.setPreferredSize(new Dimension(180, 250));
-		leftPanel_.add(scrollPane);
-		rightPanel_.setLayout(new GridLayout(10,1));
-		rightPanel_.add(addButton_);
-		rightPanel_.add(removeButton_);
-		this.setLayout(new BorderLayout());
-		this.add(leftPanel_,BorderLayout.WEST);
-		this.add(rightPanel_,BorderLayout.EAST);
-		//为按钮注册监听事件
-		addButton_.addActionListener(this);
-		removeButton_.addActionListener(this); 
+		setLayout(new BorderLayout());
+		add(leftPanel_,BorderLayout.WEST);
+		add(rightPanel_,BorderLayout.EAST);
 		
+		/**
+		 * 创建根节点 
+		 */
+		root = new JTree(createRootNode());
+		leftPanel_.add(root);
 		
-		this.setVisible(true);
+		root.addTreeExpansionListener(this);
+	}
+	@SuppressWarnings("static-access")
+	private DefaultMutableTreeNode createRootNode() {
+		// TODO Auto-generated method stub
+		File dir = new File(".");
+		DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(ROOT_NAME);
+		for(int i=0;i<dir.listRoots().length;i++) {
+			if(dir.listRoots()[i].isDirectory()) {
+				String rootPath = dir.listRoots()[i].getPath(); //将抽象路径转换为一个路径名字符串
+				treeNode = new DefaultMutableTreeNode(rootPath);
+				rootNode.add(treeNode);
+				treeNode = null;
+			}
+		}
+		return rootNode;
 	}
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		Object object  = e.getSource();
-		if(object == addButton_) {
-			actionOnAddClicked();
-		}
-		else if(object == removeButton_) {
-			actionOnRemoveClicked();
-		}
-		else {
-			throw new InvalidParameterException();
-		}	
-	}
-	private void actionOnAddClicked() {
-		// TODO Auto-generated method stub
-		JFileChooser file = new JFileChooser();
-		if(file.showOpenDialog(null)==JFileChooser.APPROVE_OPTION){
-			String fileAbsolutePath = file.getSelectedFile().toString();
-			String fileDirectory = file.getCurrentDirectory().toString()+"\\";
-			String fileName = fileAbsolutePath.replace(fileDirectory,"");
-//			System.out.println(fileName);
-			((DefaultListModel<String>) model).addElement(fileName);
-			
-		}
-	}
-	private void actionOnRemoveClicked() {
+	public void treeCollapsed(TreeExpansionEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public void treeExpanded(TreeExpansionEvent e) {
+		// TODO Auto-generated method stub
+		selectNode = (DefaultMutableTreeNode) e.getPath().getLastPathComponent();
+		String path = e.getPath().toString();
+//		System.out.println(path);
+		File file = new File(path);
+		addTreeNode(selectNode,file);
+	}
+	private void addTreeNode(DefaultMutableTreeNode node, File file) {
+		// TODO Auto-generated method stub
+		if(node == null && file == null) {
+			return;
+		}
+		if(!file.isDirectory()) {
+			return;
+		}
+		if(!node.isRoot()) {}
 	}
 }
 
