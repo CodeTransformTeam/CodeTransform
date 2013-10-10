@@ -90,7 +90,13 @@ public class JavaParser extends CodeParser {
 					
 				} else if (wordString.indexOf("//") >= 0) {
 					i = parseLineComment(wordArrayList, i);
-
+					
+				} else if (wordString.indexOf("/**") >= 0) {
+					i = parseDocumentComment(wordArrayList, i);
+					
+				} else if (wordString.indexOf("/*") >= 0) {
+					i = parseMultiLineComment(wordArrayList, i);
+					
 				} else {
 					i = parseDefault(wordArrayList, i);
 				}
@@ -101,6 +107,52 @@ public class JavaParser extends CodeParser {
 			e.printStackTrace();
 		}
 
+	}
+
+	private int parseMultiLineComment(ArrayList<String> wordArrayList, int i) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	private int parseDocumentComment(ArrayList<String> wordArrayList, int i) {
+		Color color = this.colorMap_.get("DocumentComment");
+		String wordString = wordArrayList.get(i);
+		int beginIndex = wordString.indexOf("/**");
+		String commentString = wordString.substring(beginIndex);
+		if (beginIndex > 0) {
+			// 注释不是在单词第一个字母
+			String leftString = wordString.substring(0, beginIndex);
+			wordArrayList.set(i, leftString);
+			wordArrayList.add(i + 1, commentString);
+			//简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
+			i--;
+		} else {
+			// 接下来都是注释内容
+			while (wordString.indexOf("*/") < 0) {
+				ParsedCode parsedCode = new ParsedCode();
+				parsedCode.codeString_ = wordString;
+				parsedCode.codeColor_ = color;
+				parsedResult_.add(parsedCode);
+				
+				wordString = wordArrayList.get(++i);
+			}
+			
+			//到这里注释块结束，但是结束符还没弄进去
+			beginIndex = wordString.indexOf("*/") + 2;
+			String leftString = wordString.substring(0, beginIndex);
+			wordArrayList.set(i, leftString);
+			ParsedCode parsedCode = new ParsedCode();
+			parsedCode.codeString_ = leftString;
+			parsedCode.codeColor_ = color;
+			parsedResult_.add(parsedCode);
+			if (wordString.length() > beginIndex) {
+				String remainString = wordString.substring(beginIndex);
+				wordArrayList.add(i + 1, remainString);
+			}
+			
+		}
+		
+		return i;
 	}
 
 	private int parseKeyWord(ArrayList<String> wordArrayList, int i) {
