@@ -10,7 +10,7 @@ import javax.swing.event.TreeExpansionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 
-public class filePanel extends JPanel implements TreeExpansionListener{
+public class FilePanel extends JPanel implements TreeExpansionListener{
 	/**
 	 * 这个东西是给 序列化 校验用的
 	 */
@@ -20,7 +20,7 @@ public class filePanel extends JPanel implements TreeExpansionListener{
 	private JTree root;
 	private DefaultMutableTreeNode treeNode,selectNode;
 	private String ROOT_NAME = "我的电脑";
-	public filePanel(){
+	public FilePanel(){
 		setLayout(new BorderLayout());
 		add(leftPanel_,BorderLayout.WEST);
 		add(rightPanel_,BorderLayout.EAST);
