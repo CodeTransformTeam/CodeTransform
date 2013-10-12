@@ -3,13 +3,14 @@ package CodeTransform;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class CodeTransformFrame extends JFrame implements ActionListener{
 	// 这个东西是给 序列化 校验用的
 	private static final long serialVersionUID = 1L;
 
-	private FilePanel topPanel_ = new FilePanel();
+	private FileManager topPanel_ = new FileManager();
 	private JPanel bottomPanel_ = new JPanel();
 	public CodeTransformFrame() throws Exception {
 		// 对frame进行初始化
