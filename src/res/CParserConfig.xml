@@ -1,0 +1,41 @@
+<?xml	version="1.0"   encoding="utf-8"?>
+<Config>
+	 <KeyWordSet>   
+		<KeyWord name="auto" />
+		<KeyWord name="break" />
+		<KeyWord name="case" />
+		<KeyWord name="char" />
+		<KeyWord name="const" />
+		<KeyWord name="continue" />
+		<KeyWord name="default" />
+		<KeyWord name="do" />
+		<KeyWord name="double" />
+		<KeyWord name="else" />
+		<KeyWord name="enum" />
+		<KeyWord name="extern" />
+		<KeyWord name="float" />
+		<KeyWord name="for" />
+		<KeyWord name="goto" />
+		<KeyWord name="if" />
+		<KeyWord name="int" />
+		<KeyWord name="long" />
+		<KeyWord name="register" />
+		<KeyWord name="return" />
+		<KeyWord name="short " />
+		<KeyWord name="signed" />
+		<KeyWord name="sizeof" />
+		<KeyWord name="static" />
+		<KeyWord name="struct" />
+		<KeyWord name="switch" />
+		<KeyWord name="typedef" />
+		<KeyWord name="unsigned" />
+		<KeyWord name="union" />
+		<KeyWord name="void " />
+		<KeyWord name="volatile" />
+		<KeyWord name="while" />
+	</KeyWordSet>   
+	<ColorSet>
+		<Color name="keyword" value="#7F0055" />
+		<Color name="default" value="#000000" />
+	</ColorSet>
+</Config>
