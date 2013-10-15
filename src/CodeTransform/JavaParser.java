@@ -126,18 +126,30 @@ public class JavaParser extends CodeParser {
 		} else {
 			// 接下来都是字符串内容
 			do {
+				//屏蔽第一个字符
+				wordString = wordString.substring(1);
 				int index = wordString.indexOf("\"");
-				if (index > 0 && wordString.charAt(index-1) != '\\') {
-					//字符串结束
-					break;
+				try {
+					if (index >= 0 && wordString.charAt(index-1) != '\\') {
+						//字符串结束
+						break;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println(wordString);
 				}
+
 				
 				ParsedCode parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
 				parsedCode.codeColor_ = color;
 				parsedResult_.add(parsedCode);
 
-				wordString = wordArrayList.get(++i);
+				if (wordArrayList.size() > i+1) {
+					wordString = wordArrayList.get(++i);
+				} else {
+					break;
+				}
 			} while (true);
 
 			// 到这里注释块结束，但是结束符还没弄进去
@@ -145,7 +157,8 @@ public class JavaParser extends CodeParser {
 			String leftString = wordString.substring(0, beginIndex);
 			wordArrayList.set(i, leftString);
 			ParsedCode parsedCode = new ParsedCode();
-			parsedCode.codeString_ = leftString;
+			//刚刚被跳过的一个"
+			parsedCode.codeString_ = "\"" +leftString;
 			parsedCode.codeColor_ = color;
 			parsedResult_.add(parsedCode);
 			if (wordString.length() > beginIndex) {
@@ -326,7 +339,7 @@ public class JavaParser extends CodeParser {
 
 				tmpNode = nodeMap.getNamedItem("value");
 				String colorValueString = tmpNode.getTextContent();
-				Color color = ColorBuilder.ColorFromString(colorValueString);
+				Color color = ColorConverter.ColorFromString(colorValueString);
 				colorMap_.put(colorKey, color);
 			}
 		}

@@ -5,19 +5,19 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class HTMLWriter {
-	
+
 	private CodeParser parser_;
 
-	public  HTMLWriter(CodeParser parser) {
+	public HTMLWriter(CodeParser parser) {
 		parser_ = parser;
 	}
-	
-	void	write(File file) {
+
+	void write(File file) {
 		try {
 			if (file.exists() == false) {
 				file.createNewFile();
 			}
-			
+
 			FileOutputStream fileOutputStream = new FileOutputStream(file);
 			writeHeader(fileOutputStream, file.getName());
 			writeBody(fileOutputStream);
@@ -28,7 +28,7 @@ public class HTMLWriter {
 		}
 
 	}
-	
+
 	private void writeFooter(FileOutputStream fileOutputStream) {
 		String footerString = "</body>\r\n</html>";
 		try {
@@ -38,11 +38,71 @@ public class HTMLWriter {
 		}
 	}
 
+	private String replaceEscapeChars(String src) {
+		return src;
+	}
+
 	private void writeBody(FileOutputStream fileOutputStream) {
-		int lineNumber = 1;
-		ArrayList<ParsedCode>	parsedCodes = parser_.getParserResult();
-		for (ParsedCode parsedCode : parsedCodes) {
-			
+		ArrayList<ParsedCode> parsedCodes = parser_.getParserResult();
+		try {
+			fileOutputStream
+					.write("	<div class=\"code\" style=\"background-color:#E7E5DC\">\r\n"
+							.getBytes());
+			fileOutputStream
+					.write("		<ol start=\"1\" style=\"margin:0 0 1px 45px !important;\">\r\n"
+							.getBytes());
+
+			for (int i = 0; i < parsedCodes.size(); i++) {
+				ParsedCode parsedCode = parsedCodes.get(i);
+				fileOutputStream.write("			<li>\r\n".getBytes());
+				String colorString = ColorConverter
+						.Color2String(parsedCode.codeColor_);
+				String spanString = "				<span style=\"color:" + colorString
+						+ "\">";
+				fileOutputStream.write(spanString.getBytes());
+				do {
+					String codeString = parsedCode.codeString_;
+					codeString = replaceEscapeChars(codeString);
+					fileOutputStream.write(codeString.getBytes());
+
+					if (codeString.indexOf("\n") > 0) {
+						break;
+					}
+
+					if (i < parsedCodes.size() - 1) {
+						ParsedCode nextCode = parsedCodes.get(i + 1);
+						if (nextCode.codeColor_.equals(parsedCode.codeColor_) == false
+								&& nextCode.codeString_.indexOf('\n') < 0) {
+							// 颜色不一样，又不是回车
+							colorString = ColorConverter
+									.Color2String(nextCode.codeColor_);
+							spanString = "</span><span style=\"color:"
+									+ colorString + "\">";
+							fileOutputStream.write(spanString.getBytes());
+
+							parsedCode = nextCode;
+							++i;
+						} else if (nextCode.codeColor_
+								.equals(parsedCode.codeColor_)) {
+							parsedCode = nextCode;
+							++i;
+						} else {
+							parsedCode = nextCode;
+							++i;
+						}
+					}
+				} while (i < parsedCodes.size());
+				spanString = "				</span>\r\n";
+				fileOutputStream.write(spanString.getBytes());
+
+				fileOutputStream.write("			</li>\r\n".getBytes());
+			}
+
+			fileOutputStream.write("		</ol>\r\n".getBytes());
+			fileOutputStream.write("	</div>\r\n".getBytes());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -52,8 +112,10 @@ public class HTMLWriter {
 				+ "<html>\r\n"
 				+ "<head>\r\n"
 				+ "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n"
-				+ "<title>" + title + "</title>\r\n" 
-				+ "</head>\r\n" 
+				+ "<title>"
+				+ title
+				+ "</title>\r\n"
+				+ "</head>\r\n"
 				+ "<body>\r\n";
 		try {
 			fileOutputStream.write(headerString.getBytes());
@@ -67,8 +129,13 @@ public class HTMLWriter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		HTMLWriter writer = new HTMLWriter(null);
+		JavaParser parser = new JavaParser();
+		parser.init(new File("src/CodeTransform/HTMLWriter.java"));
+		parser.parse();
+
+		HTMLWriter writer = new HTMLWriter(parser);
 		writer.write(new File("Test.html"));
+
 	}
 
 }

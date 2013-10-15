@@ -1,4 +1,1 @@
-bbb/**222
-111
-*/aaa
-ccc/**222*/ddd
+a = "ok\"hhhh";
