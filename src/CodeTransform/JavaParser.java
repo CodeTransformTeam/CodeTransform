@@ -96,6 +96,8 @@ public class JavaParser extends CodeParser {
 					
 				} else if (wordString.indexOf("/*") >= 0) {
 					i = parseMultiLineComment(wordArrayList, i);
+				} else if (wordString.indexOf("\"") >= 0) {
+					i = parseString(wordArrayList, i);
 					
 				} else {
 					i = parseDefault(wordArrayList, i);
@@ -107,6 +109,52 @@ public class JavaParser extends CodeParser {
 			e.printStackTrace();
 		}
 
+	}
+
+	private int parseString(ArrayList<String> wordArrayList, int i) {
+		Color color = this.colorMap_.get("String");
+		String wordString = wordArrayList.get(i);
+		int beginIndex = wordString.indexOf("\"");
+		String commentString = wordString.substring(beginIndex);
+		if (beginIndex > 0) {
+			// 不是在单词第一个字母
+			String leftString = wordString.substring(0, beginIndex);
+			wordArrayList.set(i, leftString);
+			wordArrayList.add(i + 1, commentString);
+			//简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
+			i--;
+		} else {
+			// 接下来都是字符串内容
+			do {
+				int index = wordString.indexOf("\"");
+				if (index > 0 && wordString.charAt(index-1) != '\\') {
+					//字符串结束
+					break;
+				}
+				
+				ParsedCode parsedCode = new ParsedCode();
+				parsedCode.codeString_ = wordString;
+				parsedCode.codeColor_ = color;
+				parsedResult_.add(parsedCode);
+
+				wordString = wordArrayList.get(++i);
+			} while (true);
+
+			// 到这里注释块结束，但是结束符还没弄进去
+			beginIndex = wordString.indexOf("\"") + 1;
+			String leftString = wordString.substring(0, beginIndex);
+			wordArrayList.set(i, leftString);
+			ParsedCode parsedCode = new ParsedCode();
+			parsedCode.codeString_ = leftString;
+			parsedCode.codeColor_ = color;
+			parsedResult_.add(parsedCode);
+			if (wordString.length() > beginIndex) {
+				String remainString = wordString.substring(beginIndex);
+				wordArrayList.add(i + 1, remainString);
+			}
+		}
+		
+		return i;
 	}
 
 	private int parseMultiLineComment(ArrayList<String> wordArrayList, int i) {

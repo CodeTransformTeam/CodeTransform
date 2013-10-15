@@ -20,7 +20,9 @@ public class C_Parser extends CodeParser {
 	private ArrayList<ParsedCode> parsedResult_ = null;
 	private Node keyWordNode_ = null;
 	private Node colorNode_ = null;
-	private ArrayList<String>	keyWordList_;
+	
+	//Unused, Commented by ccnyou
+	//private ArrayList<String>	keyWordList_;
 	
 	//xml读取部分
 	private DocumentBuilderFactory documentBuilderFactory_ = null;
@@ -55,7 +57,7 @@ public class C_Parser extends CodeParser {
 			InputStream inputStream = new FileInputStream(sourceFile_);
 			byte[] buffer = new byte[(int) sourceFile_.length()];
 			inputStream.read(buffer);
-			ArrayList<String> wordList = parseWords(buffer);
+			ArrayList<String> wordList = parsePrintableWords(buffer);
 
 			for (String string : wordList) {
 				if (isKeyWord(string)) {
