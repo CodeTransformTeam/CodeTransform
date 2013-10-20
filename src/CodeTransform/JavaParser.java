@@ -39,8 +39,10 @@ public class JavaParser extends CodeParser {
 	private ArrayList<ParsedCode> parsedResult_ = null;
 	private Node keyWordNode_ = null;
 	private Node colorNode_ = null;
+	private Node fontNode_ = null;
 	private ArrayList<String> keyWordList_ = null;
 	private HashMap<String, Color> colorMap_ = null;
+	private HashMap<String, String> fontMap_ = null;
 
 	// xml读取部分
 	private DocumentBuilderFactory documentBuilderFactory_ = null;
@@ -59,11 +61,13 @@ public class JavaParser extends CodeParser {
 			sourceFile_ = sourceFile;
 			keyWordList_ = new ArrayList<String>();
 			colorMap_ = new HashMap<String, Color>();
+			fontMap_ = new HashMap<String, String>();
 
 			initXmlConfig();
 			// 必须先初始化xml
 			initKeyWordList();
-			initHashMap();
+			initColorHashMap();
+			initFontHashMap();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -115,7 +119,8 @@ public class JavaParser extends CodeParser {
 	}
 
 	private int parseChar(ArrayList<String> wordArrayList, int i) {
-		Color color = this.colorMap_.get("String");
+		Color color = this.colorMap_.get("Char");
+
 		String wordString = wordArrayList.get(i);
 		int beginIndex = wordString.indexOf('\'');
 		int endIndex = -1;
@@ -133,7 +138,6 @@ public class JavaParser extends CodeParser {
 			//屏蔽第一个"字符
 			endIndex = 1;
 			do {
-				
 				endIndex = wordString.indexOf('\'',  endIndex);
 				if (endIndex > 0 && wordString.charAt(endIndex - 1) == '\\') {
 					endIndex++;
@@ -148,6 +152,7 @@ public class JavaParser extends CodeParser {
 				ParsedCode parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
 				parsedCode.codeColor_ = color;
+				parsedCode.codeFont_ = fontMap_.get("Char");
 				parsedResult_.add(parsedCode);
 
 				if (wordArrayList.size() > i+1) {
@@ -165,6 +170,7 @@ public class JavaParser extends CodeParser {
 
 			parsedCode.codeString_ = leftString;
 			parsedCode.codeColor_ = color;
+			parsedCode.codeFont_ = fontMap_.get("Char");
 			parsedResult_.add(parsedCode);
 			
 			if (wordString.length() > beginIndex) {
@@ -210,6 +216,7 @@ public class JavaParser extends CodeParser {
 				ParsedCode parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
 				parsedCode.codeColor_ = color;
+				parsedCode.codeFont_ = fontMap_.get("String");
 				parsedResult_.add(parsedCode);
 
 				if (wordArrayList.size() > i+1) {
@@ -227,6 +234,7 @@ public class JavaParser extends CodeParser {
 
 			parsedCode.codeString_ = leftString;
 			parsedCode.codeColor_ = color;
+			parsedCode.codeFont_ = fontMap_.get("String");
 			parsedResult_.add(parsedCode);
 			
 			if (wordString.length() > beginIndex) {
@@ -256,6 +264,7 @@ public class JavaParser extends CodeParser {
 				ParsedCode parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
 				parsedCode.codeColor_ = color;
+				parsedCode.codeFont_ = fontMap_.get("MultiLineComment");
 				parsedResult_.add(parsedCode);
 				
 				wordString = wordArrayList.get(++i);
@@ -268,6 +277,7 @@ public class JavaParser extends CodeParser {
 			ParsedCode parsedCode = new ParsedCode();
 			parsedCode.codeString_ = leftString;
 			parsedCode.codeColor_ = color;
+			parsedCode.codeFont_ = fontMap_.get("MultiLineComment");
 			parsedResult_.add(parsedCode);
 			if (wordString.length() > beginIndex) {
 				String remainString = wordString.substring(beginIndex);
@@ -296,6 +306,7 @@ public class JavaParser extends CodeParser {
 				ParsedCode parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
 				parsedCode.codeColor_ = color;
+				parsedCode.codeFont_ = fontMap_.get("DocumentComment");
 				parsedResult_.add(parsedCode);
 				
 				wordString = wordArrayList.get(++i);
@@ -308,6 +319,7 @@ public class JavaParser extends CodeParser {
 			ParsedCode parsedCode = new ParsedCode();
 			parsedCode.codeString_ = leftString;
 			parsedCode.codeColor_ = color;
+			parsedCode.codeFont_ = fontMap_.get("DocumentComment");
 			parsedResult_.add(parsedCode);
 			if (wordString.length() > beginIndex) {
 				String remainString = wordString.substring(beginIndex);
@@ -324,7 +336,8 @@ public class JavaParser extends CodeParser {
 		String wordString = wordArrayList.get(i);
 		ParsedCode parsedCode = new ParsedCode();
 		parsedCode.codeString_ = wordString;
-		parsedCode.codeColor_ = this.colorMap_.get("KeyWord");
+		parsedCode.codeColor_ = colorMap_.get("KeyWord");
+		parsedCode.codeFont_ = fontMap_.get("KeyWord");
 		parsedResult_.add(parsedCode);
 		return i;
 	}
@@ -346,7 +359,8 @@ public class JavaParser extends CodeParser {
 			//简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
 			i--;
 		} else {
-			parsedCode.codeColor_ = this.colorMap_.get("LineComment");
+			parsedCode.codeColor_ = colorMap_.get("LineComment");
+			parsedCode.codeFont_ = fontMap_.get("LineComment");
 			parsedResult_.add(parsedCode);
 			// 接下来都是注释内容
 			while (wordString.indexOf('\n') < 0) {
@@ -358,7 +372,8 @@ public class JavaParser extends CodeParser {
 				
 				parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
-				parsedCode.codeColor_ = this.colorMap_.get("LineComment");
+				parsedCode.codeColor_ = colorMap_.get("LineComment");
+				parsedCode.codeFont_ = fontMap_.get("LineComment");
 				parsedResult_.add(parsedCode);
 			}
 		}
@@ -371,7 +386,8 @@ public class JavaParser extends CodeParser {
 		String wordString = wordArrayList.get(i);
 		ParsedCode parsedCode = new ParsedCode();
 		parsedCode.codeString_ = wordString;
-		parsedCode.codeColor_ = this.colorMap_.get("Default");
+		parsedCode.codeColor_ = colorMap_.get("Default");
+		parsedCode.codeFont_ = fontMap_.get("Default");
 		parsedResult_.add(parsedCode);
 		return i;
 	}
@@ -398,8 +414,8 @@ public class JavaParser extends CodeParser {
 		}
 	}
 
-	void initHashMap() {
-		// 这里初始化颜色哈希表
+	void initColorHashMap() {
+		// 这里初始化颜色哈希表和字体哈希表
 		NodeList colorNodeList = colorNode_.getChildNodes();
 		int colorListLength = colorNodeList.getLength();
 		for (int i = 0; i < colorListLength; i++) {
@@ -418,6 +434,26 @@ public class JavaParser extends CodeParser {
 		}
 	}
 
+
+	void initFontHashMap() {
+		// 这里初始化颜色哈希表和字体哈希表
+		NodeList colorNodeList = fontNode_.getChildNodes();
+		int colorListLength = colorNodeList.getLength();
+		for (int i = 0; i < colorListLength; i++) {
+			Node node = colorNodeList.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				NamedNodeMap nodeMap = node.getAttributes();
+
+				Node tmpNode = nodeMap.getNamedItem("name");
+				String fontKey = tmpNode.getTextContent();
+
+				tmpNode = nodeMap.getNamedItem("value");
+				String valueString = tmpNode.getTextContent();
+				fontMap_.put(fontKey, valueString);
+			}
+		}
+	}
+	
 	void initXmlConfig() throws ParserConfigurationException, SAXException,
 			IOException {
 		// 下面是初始化xml文件
@@ -437,13 +473,15 @@ public class JavaParser extends CodeParser {
 					keyWordNode_ = node;
 				} else if (node.getNodeName() == "ColorSet") {
 					colorNode_ = node;
+				} else if (node.getNodeName() == "FontSet") {
+					fontNode_ = node;
 				} else {
 					System.out.println("---" + node.getNodeName());
 				}
 			}
 		}
 
-		if (keyWordNode_ == null || colorNode_ == null) {
+		if (keyWordNode_ == null || colorNode_ == null || fontNode_ == null) {
 			throw new IllegalArgumentException("JavaParserConfig.xml 文件非法");
 		}
 	}

@@ -17,6 +17,7 @@ class ParsedCode	{
 	public String 	codeString_;
 	//这块代码的颜色，根据不同语言语法着色
 	public Color 	codeColor_;
+	public String    codeFont_;
 	
 }
 

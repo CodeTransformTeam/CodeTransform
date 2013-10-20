@@ -8,683 +8,695 @@
 	<div class="code" style="background-color:#E7E5DC">
 		<ol start="1" style="margin:0 0 1px 45px !important;">
 			<li>
-				<span style="color:#7f0055">package</span><span style="color:#000000">&nbsp;CodeTransform;&nbsp;
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >package</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;CodeTransform;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#7f0055">import</span><span style="color:#000000">&nbsp;java.io.File;&nbsp;
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >import</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;java.io.File;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#7f0055">import</span><span style="color:#000000">&nbsp;java.io.FileOutputStream;&nbsp;
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >import</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;java.io.FileOutputStream;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#7f0055">import</span><span style="color:#000000">&nbsp;java.util.ArrayList;&nbsp;
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >import</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;java.util.ArrayList;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#7f0055">public</span><span style="color:#000000">&nbsp;</span><span style="color:#7f0055">class</span><span style="color:#000000">&nbsp;HTMLWriter&nbsp;{&nbsp;
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >public</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >class</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;HTMLWriter&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;</span><span style="color:#7f0055">private</span><span style="color:#000000">&nbsp;CodeParser&nbsp;parser_;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;CodeParser&nbsp;parser_;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;</span><span style="color:#7f0055">public</span><span style="color:#000000">&nbsp;HTMLWriter(CodeParser&nbsp;parser)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >public</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;HTMLWriter(CodeParser&nbsp;parser)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;parser_&nbsp;=&nbsp;parser;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;parser_&nbsp;=&nbsp;parser;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;</span><span style="color:#7f0055">void</span><span style="color:#000000">&nbsp;write(File&nbsp;file)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >void</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;write(File&nbsp;file)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">try</span><span style="color:#000000">&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >try</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">if</span><span style="color:#000000">&nbsp;(file.exists()&nbsp;==&nbsp;false)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(file.exists()&nbsp;==&nbsp;false)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.createNewFile();&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.createNewFile();&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream&nbsp;fileOutputStream&nbsp;=&nbsp;</span><span style="color:#7f0055">new</span><span style="color:#000000">&nbsp;FileOutputStream(file);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream&nbsp;fileOutputStream&nbsp;=&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;FileOutputStream(file);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeHeader(fileOutputStream,&nbsp;file.getName());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeHeader(fileOutputStream,&nbsp;file.getName());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeBody(fileOutputStream);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeBody(fileOutputStream);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeFooter(fileOutputStream);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeFooter(fileOutputStream);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.close();&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.close();&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055">catch</span><span style="color:#000000">&nbsp;(Exception&nbsp;e)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >catch</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(Exception&nbsp;e)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;</span><span style="color:#7f0055">private</span><span style="color:#000000">&nbsp;</span><span style="color:#7f0055">void</span><span style="color:#000000">&nbsp;writeFooter(FileOutputStream&nbsp;fileOutputStream)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >void</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;writeFooter(FileOutputStream&nbsp;fileOutputStream)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;footerString&nbsp;=&nbsp;</span><span style="color:#0000c0">"&lt;/body&gt;\r\n&lt;/html&gt;"</span><span style="color:#000000">;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;footerString&nbsp;=&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;/body&gt;\r\n&lt;/html&gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">try</span><span style="color:#000000">&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >try</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(footerString.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(footerString.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055">catch</span><span style="color:#000000">&nbsp;(Exception&nbsp;e)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >catch</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(Exception&nbsp;e)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;</span><span style="color:#7f0055">private</span><span style="color:#000000">&nbsp;String&nbsp;replaceEscapeChars(String&nbsp;src)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;String&nbsp;replaceEscapeChars(String&nbsp;src)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0">"&amp;"</span><span style="color:#000000">,&nbsp;</span><span style="color:#0000c0">"&amp;amp;"</span><span style="color:#000000">);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;amp;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0">"&nbsp;"</span><span style="color:#000000">,&nbsp;</span><span style="color:#0000c0">"&amp;nbsp;"</span><span style="color:#000000">);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&nbsp;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;nbsp;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0">"\r\n"</span><span style="color:#000000">,&nbsp;</span><span style="color:#0000c0">"&amp;nbsp;\r\n"</span><span style="color:#000000">);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;nbsp;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0">"\t"</span><span style="color:#000000">,&nbsp;</span><span style="color:#0000c0">"&amp;nbsp;&amp;nbsp;"</span><span style="color:#000000">);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\t"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;nbsp;&amp;nbsp;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0">"&lt;"</span><span style="color:#000000">,&nbsp;</span><span style="color:#0000c0">"&amp;lt;"</span><span style="color:#000000">);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;lt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0">"&gt;"</span><span style="color:#000000">,&nbsp;</span><span style="color:#0000c0">"&amp;gt;"</span><span style="color:#000000">);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;src&nbsp;=&nbsp;src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">return</span><span style="color:#000000">&nbsp;src;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >return</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;src;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;</span><span style="color:#7f0055">private</span><span style="color:#000000">&nbsp;</span><span style="color:#7f0055">void</span><span style="color:#000000">&nbsp;writeBody(FileOutputStream&nbsp;fileOutputStream)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >void</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;writeBody(FileOutputStream&nbsp;fileOutputStream)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;ArrayList&lt;ParsedCode&gt;&nbsp;parsedCodes&nbsp;=&nbsp;parser_.getParserResult();&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;ArrayList&lt;ParsedCode&gt;&nbsp;parsedCodes&nbsp;=&nbsp;parser_.getParserResult();&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">try</span><span style="color:#000000">&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >try</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.write(</span><span style="color:#0000c0">"&nbsp;&nbsp;&lt;div&nbsp;class=\"code\"&nbsp;style=\"background-color:#E7E5DC\"&gt;\r\n"</span><span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&nbsp;&nbsp;&lt;div&nbsp;class=\"code\"&nbsp;style=\"background-color:#E7E5DC\"&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.write(</span><span style="color:#0000c0">"&nbsp;&nbsp;&nbsp;&nbsp;&lt;ol&nbsp;start=\"1\"&nbsp;style=\"margin:0&nbsp;0&nbsp;1px&nbsp;45px&nbsp;!important;\"&gt;\r\n"</span><span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&nbsp;&nbsp;&nbsp;&nbsp;&lt;ol&nbsp;start=\"1\"&nbsp;style=\"margin:0&nbsp;0&nbsp;1px&nbsp;45px&nbsp;!important;\"&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">for</span><span style="color:#000000">&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;parsedCodes.size();&nbsp;i++)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >for</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;parsedCodes.size();&nbsp;i++)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ParsedCode&nbsp;parsedCode&nbsp;=&nbsp;parsedCodes.get(i);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ParsedCode&nbsp;parsedCode&nbsp;=&nbsp;parsedCodes.get(i);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(</span><span style="color:#0000c0">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;\r\n"</span><span style="color:#000000">.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;colorString&nbsp;=&nbsp;ColorConverter&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;colorString&nbsp;=&nbsp;ColorConverter&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Color2String(parsedCode.codeColor_);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Color2String(parsedCode.codeColor_);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;spanString&nbsp;=&nbsp;</span><span style="color:#0000c0">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;style=\"color:"</span><span style="color:#000000">&nbsp;+&nbsp;colorString&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;fontString&nbsp;=&nbsp;parsedCode.codeFont_;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0">"\"&gt;"</span><span style="color:#000000">;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;spanString&nbsp;=&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;style=\"color:"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;+&nbsp;colorString&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(spanString.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >";&nbsp;font:"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;+&nbsp;fontString&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\"&nbsp;&gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">do</span><span style="color:#000000">&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(spanString.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;codeString&nbsp;=&nbsp;parsedCode.codeString_;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >do</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;codeString&nbsp;=&nbsp;parsedCode.codeString_;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f">//检测换行个数，两个以上的话拆分成开&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#3f7f5f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">int</span><span style="color:#000000">&nbsp;index&nbsp;=&nbsp;codeString.indexOf(</span><span style="color:#0000c0">"\n"</span><span style="color:#000000">);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >//检测换行个数，两个以上的话拆分成开&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">if</span><span style="color:#000000">&nbsp;(index&nbsp;&gt;=&nbsp;0)&nbsp;{&nbsp;
+				<span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >int</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;index&nbsp;=&nbsp;codeString.indexOf(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index++;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(index&nbsp;&gt;=&nbsp;0)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">if</span><span style="color:#000000">&nbsp;(index&nbsp;&lt;&nbsp;codeString.length())&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index++;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f">//&nbsp;至少有两个换行&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(index&nbsp;&lt;&nbsp;codeString.length())&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#3f7f5f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000">String&nbsp;rightString&nbsp;=&nbsp;codeString.substring(index);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >//&nbsp;至少有两个换行&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ParsedCode&nbsp;parsedCodeNew&nbsp;=&nbsp;</span><span style="color:#7f0055">new</span><span style="color:#000000">&nbsp;ParsedCode();&nbsp;
+				<span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String&nbsp;rightString&nbsp;=&nbsp;codeString.substring(index);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCodeNew.codeColor_&nbsp;=&nbsp;parsedCode.codeColor_;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ParsedCode&nbsp;parsedCodeNew&nbsp;=&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;ParsedCode();&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCodeNew.codeString_&nbsp;=&nbsp;rightString;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCodeNew.codeColor_&nbsp;=&nbsp;parsedCode.codeColor_;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCodes.add(i+1,&nbsp;parsedCodeNew);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCodeNew.codeString_&nbsp;=&nbsp;rightString;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCodeNew.codeFont_&nbsp;=&nbsp;parsedCode.codeFont_;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;leftString&nbsp;=&nbsp;codeString.substring(0,&nbsp;index);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCodes.add(i+1,&nbsp;parsedCodeNew);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCode.codeString_&nbsp;=&nbsp;leftString;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCodes.set(i,&nbsp;parsedCode);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;leftString&nbsp;=&nbsp;codeString.substring(0,&nbsp;index);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCode.codeString_&nbsp;=&nbsp;leftString;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;codeString&nbsp;=&nbsp;leftString;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCodes.set(i,&nbsp;parsedCode);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;codeString&nbsp;=&nbsp;leftString;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;codeString&nbsp;=&nbsp;replaceEscapeChars(codeString);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(codeString.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;codeString&nbsp;=&nbsp;replaceEscapeChars(codeString);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">if</span><span style="color:#000000">&nbsp;(codeString.indexOf(</span><span style="color:#0000c0">"\n"</span><span style="color:#000000">)&nbsp;&gt;&nbsp;0)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(codeString.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(codeString.indexOf(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >)&nbsp;&gt;&nbsp;0)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">if</span><span style="color:#000000">&nbsp;(i&nbsp;&lt;&nbsp;parsedCodes.size()&nbsp;-&nbsp;1)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ParsedCode&nbsp;nextCode&nbsp;=&nbsp;parsedCodes.get(i&nbsp;+&nbsp;1);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">if</span><span style="color:#000000">&nbsp;(nextCode.codeColor_.equals(parsedCode.codeColor_)&nbsp;==&nbsp;</span><span style="color:#7f0055">false&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(i&nbsp;&lt;&nbsp;parsedCodes.size()&nbsp;-&nbsp;1)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;nextCode.codeString_.indexOf(</span><span style="color:#0000c0">'\n'</span><span style="color:#000000">)&nbsp;&lt;&nbsp;0)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ParsedCode&nbsp;nextCode&nbsp;=&nbsp;parsedCodes.get(i&nbsp;+&nbsp;1);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f">//&nbsp;颜色不一样，又不是回车&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(nextCode.codeColor_.equals(parsedCode.codeColor_)&nbsp;==&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >false&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#3f7f5f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000">colorString&nbsp;=&nbsp;ColorConverter&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&amp;&nbsp;nextCode.codeString_.indexOf(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >'\n'</span><span style="color:#000000; font:normal normal normal medium sans-serif" >)&nbsp;&lt;&nbsp;0)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Color2String(nextCode.codeColor_);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >//&nbsp;颜色不一样，又不是回车&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spanString&nbsp;=&nbsp;</span><span style="color:#0000c0">"&lt;/span&gt;&lt;span&nbsp;style=\"color:"</span><span style="color:#000000">&nbsp;
+				<span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >colorString&nbsp;=&nbsp;ColorConverter&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;colorString&nbsp;+&nbsp;</span><span style="color:#0000c0">"\"&gt;"</span><span style="color:#000000">;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Color2String(nextCode.codeColor_);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(spanString.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fontString&nbsp;=&nbsp;nextCode.codeFont_;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spanString&nbsp;=&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;/span&gt;&lt;span&nbsp;style=\"color:"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;+&nbsp;colorString&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCode&nbsp;=&nbsp;nextCode;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >";&nbsp;font:"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;+&nbsp;fontString&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\"&nbsp;&gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++i;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(spanString.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055">else</span><span style="color:#000000">&nbsp;</span><span style="color:#7f0055">if</span><span style="color:#000000">&nbsp;(nextCode.codeColor_&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.equals(parsedCode.codeColor_))&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCode&nbsp;=&nbsp;nextCode;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCode&nbsp;=&nbsp;nextCode;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++i;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++i;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >else</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(nextCode.codeColor_&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055">else</span><span style="color:#000000">&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.equals(parsedCode.codeColor_))&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCode&nbsp;=&nbsp;nextCode;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCode&nbsp;=&nbsp;nextCode;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++i;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++i;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >else</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055">else</span><span style="color:#000000">&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parsedCode&nbsp;=&nbsp;nextCode;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++i;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055">while</span><span style="color:#000000">&nbsp;(i&nbsp;&lt;&nbsp;parsedCodes.size());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >else</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spanString&nbsp;=&nbsp;</span><span style="color:#0000c0">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;\r\n"</span><span style="color:#000000">;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(spanString.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >while</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(i&nbsp;&lt;&nbsp;parsedCodes.size());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(</span><span style="color:#0000c0">"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;\r\n"</span><span style="color:#000000">.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spanString&nbsp;=&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(spanString.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(</span><span style="color:#0000c0">"&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ol&gt;\r\n"</span><span style="color:#000000">.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(</span><span style="color:#0000c0">"&nbsp;&nbsp;&lt;/div&gt;\r\n"</span><span style="color:#000000">.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055">catch</span><span style="color:#000000">&nbsp;(Exception&nbsp;e)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ol&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&nbsp;&nbsp;&lt;/div&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >catch</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(Exception&nbsp;e)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;</span><span style="color:#7f0055">private</span><span style="color:#000000">&nbsp;</span><span style="color:#7f0055">void</span><span style="color:#000000">&nbsp;writeHeader(FileOutputStream&nbsp;fileOutputStream,&nbsp;String&nbsp;title)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;headerString&nbsp;=&nbsp;</span><span style="color:#0000c0">"&lt;!DOCTYPE&nbsp;html&nbsp;PUBLIC&nbsp;\"-//W3C//DTD&nbsp;HTML&nbsp;4.01&nbsp;Transitional//EN\"&nbsp;"</span><span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0">"\"http://www.w3.org/TR/html4/loose.dtd\"&gt;\r\n"</span><span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0">"&lt;html&gt;\r\n"</span><span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >void</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;writeHeader(FileOutputStream&nbsp;fileOutputStream,&nbsp;String&nbsp;title)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0">"&lt;head&gt;\r\n"</span><span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;headerString&nbsp;=&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;!DOCTYPE&nbsp;html&nbsp;PUBLIC&nbsp;\"-//W3C//DTD&nbsp;HTML&nbsp;4.01&nbsp;Transitional//EN\"&nbsp;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0">"&lt;meta&nbsp;http-equiv=\"Content-Type\"&nbsp;content=\"text/html;&nbsp;charset=UTF-8\"&gt;\r\n"</span><span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\"http://www.w3.org/TR/html4/loose.dtd\"&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0">"&lt;title&gt;"</span><span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;html&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;title&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;head&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0">"&lt;/title&gt;\r\n"</span><span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;meta&nbsp;http-equiv=\"Content-Type\"&nbsp;content=\"text/html;&nbsp;charset=UTF-8\"&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0">"&lt;/head&gt;\r\n"</span><span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;title&gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0">"&lt;body&gt;\r\n"</span><span style="color:#000000">;&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;title&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055">try</span><span style="color:#000000">&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;/title&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(headerString.getBytes());&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;/head&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(</span><span style="color:#0000c0">"HTMLWriter.writeHeader()"</span><span style="color:#000000">);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;body&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >;&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055">catch</span><span style="color:#000000">&nbsp;(Exception&nbsp;e)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >try</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileOutputStream.write(headerString.getBytes());&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"HTMLWriter.writeHeader()"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >catch</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;(Exception&nbsp;e)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;</span><span style="color:#0000c0">/**&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#0000c0">&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;args&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;}&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#0000c0">&nbsp;&nbsp;&nbsp;*/&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;</span><span style="color:#7f0055">public</span><span style="color:#000000">&nbsp;</span><span style="color:#7f0055">static</span><span style="color:#000000">&nbsp;</span><span style="color:#7f0055">void</span><span style="color:#000000">&nbsp;main(String[]&nbsp;args)&nbsp;{&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >/**&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;JavaParser&nbsp;parser&nbsp;=&nbsp;</span><span style="color:#7f0055">new</span><span style="color:#000000">&nbsp;JavaParser();&nbsp;
+				<span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;args&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;parser.init(new&nbsp;File(</span><span style="color:#0000c0">"temp/javatest.java"</span><span style="color:#000000">));&nbsp;
+				<span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;*/&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;parser.parse();&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >public</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >static</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >void</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;main(String[]&nbsp;args)&nbsp;{&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;JavaParser&nbsp;parser&nbsp;=&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;JavaParser();&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;HTMLWriter&nbsp;writer&nbsp;=&nbsp;</span><span style="color:#7f0055">new</span><span style="color:#000000">&nbsp;HTMLWriter(parser);&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;parser.init(new&nbsp;File(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"temp/javatest.java"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >));&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;writer.write(new&nbsp;File(</span><span style="color:#0000c0">"Test.html"</span><span style="color:#000000">));&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;parser.parse();&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;&nbsp;}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;HTMLWriter&nbsp;writer&nbsp;=&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;HTMLWriter(parser);&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;writer.write(new&nbsp;File(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"Test.html"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >));&nbsp;
 				</span>
 			</li>
 			<li>
-				<span style="color:#000000">}&nbsp;
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li>
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;}&nbsp;
+				</span>
+			</li>
+			<li>
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li>
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
 				</span>
 			</li>
 		</ol>

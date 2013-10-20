@@ -64,8 +64,9 @@ public class HTMLWriter {
 				fileOutputStream.write("			<li>\r\n".getBytes());
 				String colorString = ColorConverter
 						.Color2String(parsedCode.codeColor_);
+				String fontString = parsedCode.codeFont_;
 				String spanString = "				<span style=\"color:" + colorString
-						+ "\">";
+						+ "; font:" + fontString + "\" >";
 				fileOutputStream.write(spanString.getBytes());
 				do {
 					String codeString = parsedCode.codeString_;
@@ -80,6 +81,7 @@ public class HTMLWriter {
 							ParsedCode parsedCodeNew = new ParsedCode();
 							parsedCodeNew.codeColor_ = parsedCode.codeColor_;
 							parsedCodeNew.codeString_ = rightString;
+							parsedCodeNew.codeFont_ = parsedCode.codeFont_;
 							parsedCodes.add(i+1, parsedCodeNew);
 							
 							String leftString = codeString.substring(0, index);
@@ -104,8 +106,9 @@ public class HTMLWriter {
 							// 颜色不一样，又不是回车
 							colorString = ColorConverter
 									.Color2String(nextCode.codeColor_);
-							spanString = "</span><span style=\"color:"
-									+ colorString + "\">";
+							fontString = nextCode.codeFont_;
+							spanString = "</span><span style=\"color:" + colorString
+									+ "; font:" + fontString + "\" >";
 							fileOutputStream.write(spanString.getBytes());
 
 							parsedCode = nextCode;
