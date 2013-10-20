@@ -94,8 +94,13 @@ public class JavaParser extends CodeParser {
 					
 				} else if (wordString.indexOf("/*") >= 0) {
 					i = parseMultiLineComment(wordArrayList, i);
+					
 				} else if (wordString.indexOf("\"") >= 0) {
 					i = parseString(wordArrayList, i);
+					
+				} else if (wordString.indexOf('\'') >= 0) {
+					//单个字符
+					i = parseChar(wordArrayList, i);
 					
 				} else {
 					i = parseDefault(wordArrayList, i);
@@ -107,6 +112,68 @@ public class JavaParser extends CodeParser {
 			e.printStackTrace();
 		}
 
+	}
+
+	private int parseChar(ArrayList<String> wordArrayList, int i) {
+		Color color = this.colorMap_.get("String");
+		String wordString = wordArrayList.get(i);
+		int beginIndex = wordString.indexOf('\'');
+		int endIndex = -1;
+		String commentString = wordString.substring(beginIndex);
+		if (beginIndex > 0) {
+			// 不是在单词第一个字母
+			String leftString = wordString.substring(0, beginIndex);
+			wordArrayList.set(i, leftString);
+			wordArrayList.add(i + 1, commentString);
+			//简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
+			i--;
+		} else {
+			// 接下来都是字符串内容
+			
+			//屏蔽第一个"字符
+			endIndex = 1;
+			do {
+				
+				endIndex = wordString.indexOf('\'',  endIndex);
+				if (endIndex > 0 && wordString.charAt(endIndex - 1) == '\\') {
+					endIndex++;
+					//不是结束符，转义字符
+					continue;
+				} else if (endIndex > 0 && wordString.charAt(endIndex - 1) != '\\') {
+					break;
+				} else if (endIndex == 0) {
+					break;
+				}
+			
+				ParsedCode parsedCode = new ParsedCode();
+				parsedCode.codeString_ = wordString;
+				parsedCode.codeColor_ = color;
+				parsedResult_.add(parsedCode);
+
+				if (wordArrayList.size() > i+1) {
+					wordString = wordArrayList.get(++i);
+				} else {
+					break;
+				}
+			} while (true);
+
+			// 到这里字符串块结束，但是结束符还没弄进去
+			endIndex++;
+			String leftString = wordString.substring(0, endIndex);
+			wordArrayList.set(i, leftString);
+			ParsedCode parsedCode = new ParsedCode();
+
+			parsedCode.codeString_ = leftString;
+			parsedCode.codeColor_ = color;
+			parsedResult_.add(parsedCode);
+			
+			if (wordString.length() > beginIndex) {
+				String remainString = wordString.substring(endIndex);
+				wordArrayList.add(i + 1, remainString);
+			}
+		}
+		
+		return i;
 	}
 
 	private int parseString(ArrayList<String> wordArrayList, int i) {
