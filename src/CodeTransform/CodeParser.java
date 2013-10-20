@@ -59,24 +59,29 @@ public abstract class CodeParser {
 	 * "abc+-"、"\r\n"、"\t\t"、"gh"
 	 */
 	protected ArrayList<String> parsePrintableWords(byte[] buffer) {
-		StringBuffer stringBuffer = new StringBuffer();
 		ArrayList<String> result = new ArrayList<String>();
 		Boolean stringPrintable = false;
+		
+		byte[] splitBuffer = new byte[buffer.length];
+		int j = 0;
+		
 		for (int i = 0; i < buffer.length; i++) {
 			boolean charPrintable = isCharPrintable(buffer[i]);
 			if (charPrintable != stringPrintable) {
 				stringPrintable = charPrintable;
-				if (stringBuffer.length() > 0) {
-					result.add(stringBuffer.toString());
+				if (j > 0) {
+					String string = new String(splitBuffer, 0, j);
+					result.add(string);
 					//清空掉
-					stringBuffer = new StringBuffer();
+					j = 0;
 				}
 			} 
-			stringBuffer.append((char)buffer[i]);
+			splitBuffer[j++] = buffer[i];
 		}
 		
-		if (stringBuffer.length() > 0) {
-			result.add(stringBuffer.toString());
+		if (j > 0) {
+			String string = new String(splitBuffer, 0, j);
+			result.add(string);
 		}
 		
 		return result;

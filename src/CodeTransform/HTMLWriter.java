@@ -1,5 +1,5 @@
 package CodeTransform;
-
+ 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -39,6 +39,13 @@ public class HTMLWriter {
 	}
 
 	private String replaceEscapeChars(String src) {
+		src = src.replace("&", "&amp;");
+		src = src.replace(" ", "&nbsp;");
+		src = src.replace("\r\n", "&nbsp;\r\n");
+		src = src.replace("\t", "&nbsp;&nbsp;");
+		src = src.replace("<", "&lt;");
+		src = src.replace(">", "&gt;");
+
 		return src;
 	}
 
@@ -62,6 +69,27 @@ public class HTMLWriter {
 				fileOutputStream.write(spanString.getBytes());
 				do {
 					String codeString = parsedCode.codeString_;
+					
+					//检测换行个数，两个以上的话拆分成开
+					int index = codeString.indexOf("\n");
+					if (index >= 0) {
+						index++;
+						if (index < codeString.length()) {
+							// 至少有两个换行
+							String rightString = codeString.substring(index);
+							ParsedCode parsedCodeNew = new ParsedCode();
+							parsedCodeNew.codeColor_ = parsedCode.codeColor_;
+							parsedCodeNew.codeString_ = rightString;
+							parsedCodes.add(i+1, parsedCodeNew);
+							
+							String leftString = codeString.substring(0, index);
+							parsedCode.codeString_ = leftString;
+							parsedCodes.set(i, parsedCode);
+							
+							codeString = leftString;
+						}
+					}
+					
 					codeString = replaceEscapeChars(codeString);
 					fileOutputStream.write(codeString.getBytes());
 
@@ -90,6 +118,8 @@ public class HTMLWriter {
 							parsedCode = nextCode;
 							++i;
 						}
+					} else {
+						break;
 					}
 				} while (i < parsedCodes.size());
 				spanString = "				</span>\r\n";
@@ -101,7 +131,6 @@ public class HTMLWriter {
 			fileOutputStream.write("		</ol>\r\n".getBytes());
 			fileOutputStream.write("	</div>\r\n".getBytes());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -130,7 +159,7 @@ public class HTMLWriter {
 	 */
 	public static void main(String[] args) {
 		JavaParser parser = new JavaParser();
-		parser.init(new File("src/CodeTransform/HTMLWriter.java"));
+		parser.init(new File("temp/javatest.java"));
 		parser.parse();
 
 		HTMLWriter writer = new HTMLWriter(parser);

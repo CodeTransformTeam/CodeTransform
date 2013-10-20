@@ -72,8 +72,6 @@ public class JavaParser extends CodeParser {
 
 	@Override
 	void parse() {
-		assert (sourceFile_ != null);
-		assert (keyWordNode_ != null && colorNode_ != null);
 		try {
 			parsedResult_ = new ArrayList<ParsedCode>();
 			InputStream inputStream = new FileInputStream(sourceFile_);
@@ -115,6 +113,7 @@ public class JavaParser extends CodeParser {
 		Color color = this.colorMap_.get("String");
 		String wordString = wordArrayList.get(i);
 		int beginIndex = wordString.indexOf("\"");
+		int endIndex = -1;
 		String commentString = wordString.substring(beginIndex);
 		if (beginIndex > 0) {
 			// 不是在单词第一个字母
@@ -125,21 +124,22 @@ public class JavaParser extends CodeParser {
 			i--;
 		} else {
 			// 接下来都是字符串内容
+			
+			//屏蔽第一个"字符
+			endIndex = 1;
 			do {
-				//屏蔽第一个字符
-				wordString = wordString.substring(1);
-				int index = wordString.indexOf("\"");
-				try {
-					if (index >= 0 && wordString.charAt(index-1) != '\\') {
-						//字符串结束
-						break;
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-					System.out.println(wordString);
-				}
-
 				
+				endIndex = wordString.indexOf("\"",  endIndex);
+				if (endIndex > 0 && wordString.charAt(endIndex - 1) == '\\') {
+					endIndex++;
+					//不是结束符，转义字符
+					continue;
+				} else if (endIndex > 0 && wordString.charAt(endIndex - 1) != '\\') {
+					break;
+				} else if (endIndex == 0) {
+					break;
+				}
+			
 				ParsedCode parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
 				parsedCode.codeColor_ = color;
@@ -152,17 +152,18 @@ public class JavaParser extends CodeParser {
 				}
 			} while (true);
 
-			// 到这里注释块结束，但是结束符还没弄进去
-			beginIndex = wordString.indexOf("\"") + 1;
-			String leftString = wordString.substring(0, beginIndex);
+			// 到这里字符串块结束，但是结束符还没弄进去
+			endIndex++;
+			String leftString = wordString.substring(0, endIndex);
 			wordArrayList.set(i, leftString);
 			ParsedCode parsedCode = new ParsedCode();
-			//刚刚被跳过的一个"
-			parsedCode.codeString_ = "\"" +leftString;
+
+			parsedCode.codeString_ = leftString;
 			parsedCode.codeColor_ = color;
 			parsedResult_.add(parsedCode);
+			
 			if (wordString.length() > beginIndex) {
-				String remainString = wordString.substring(beginIndex);
+				String remainString = wordString.substring(endIndex);
 				wordArrayList.add(i + 1, remainString);
 			}
 		}
@@ -282,7 +283,12 @@ public class JavaParser extends CodeParser {
 			parsedResult_.add(parsedCode);
 			// 接下来都是注释内容
 			while (wordString.indexOf('\n') < 0) {
-				wordString = wordArrayList.get(++i);
+				if (i < wordArrayList.size() - 1) {
+					wordString = wordArrayList.get(++i);
+				} else {
+					break;
+				}
+				
 				parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
 				parsedCode.codeColor_ = this.colorMap_.get("LineComment");
