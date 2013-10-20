@@ -58,7 +58,7 @@
 		<Color name="LineComment" value="#000000" />
 		<Color name="LineComment" value="#3F7F5F" />
 		<Color name="MultiLineComment" value="#3F7F5F" />
-		<Color name="DocumentComment" value="#0000C0" />
+		<Color name="DocumentComment" value="#7F9FBF" />
 		<Color name="String" value="#0000C0" />
 		<Color name="Char" value="#0000C0" />
 		<Color name="Default" value="#000000" />
@@ -68,7 +68,7 @@
 		<Font name="LineComment" value="normal normal normal medium sans-serif" />
 		<Font name="LineComment" value="italic normal normal medium sans-serif" />
 		<Font name="MultiLineComment" value="normal normal normal medium sans-serif" />
-		<Font name="DocumentComment" value="normal normal normal medium sans-serif" />
+		<Font name="DocumentComment" value="normal normal bold medium sans-serif" />
 		<Font name="String" value="normal normal normal medium sans-serif" />
 		<Font name="Char" value="normal normal normal medium sans-serif" />
 		<Font name="Default" value="normal normal normal medium sans-serif" />
