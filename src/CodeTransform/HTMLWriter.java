@@ -161,12 +161,12 @@ public class HTMLWriter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		JavaParser parser = new JavaParser();
-		parser.init(new File("temp/javatest.java"));
+		CodeParser parser = new CppParser();
+		parser.init(new File("temp/cpptest.cpp"));
 		parser.parse();
 
 		HTMLWriter writer = new HTMLWriter(parser);
-		writer.write(new File("Test.html"));
+		writer.write(new File("CppTest.html"));
 
 	}
 

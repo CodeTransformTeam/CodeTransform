@@ -1,13 +1,3 @@
-/*模块名称: Java代码分析
- *主要功能：
- *1，划分单词以及符号
- *2，确定每个关键字颜色
- *3，确定注释块并上色
- *		包括行注释，块注释，文档注释
- *4，确定字符串块并上色
- *5，提供颜色设置功能
- */
-
 package CodeTransform;
 
 import java.awt.Color;
@@ -25,17 +15,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class JavaParser extends CodeParser {
+public class CppParser extends CodeParser {
 	enum CodeBlock {
 		CodeBlockKeyWord, // 关键字
 		CodeBlockLineComment, // 单行注释
 		CodeBlockMultiLineComment, // 多行注释
-		CodeBlockDocumentComment, // 文档注释，类似 /** 注释内容 */
 		CodeBlockString, // 字符串内容，就是 "这种"
 		CodeBlockChar, // 字符内容，就是 '这种'
 		CodeBlockDefault // 默认块
 	}
-	
+
 	private File sourceFile_ = null;
 	private ArrayList<ParsedCode> parsedResult_ = null;
 	private Node keyWordNode_ = null;
@@ -90,23 +79,20 @@ public class JavaParser extends CodeParser {
 				if (hasKeyWord(wordString)) {
 					// 关键字块
 					i = parseKeyWord(wordArrayList, i);
-					
+
 				} else if (wordString.indexOf("//") >= 0) {
 					i = parseLineComment(wordArrayList, i);
-					
-				} else if (wordString.indexOf("/**") >= 0) {
-					i = parseDocumentComment(wordArrayList, i);
-					
+
 				} else if (wordString.indexOf("/*") >= 0) {
 					i = parseMultiLineComment(wordArrayList, i);
-					
+
 				} else if (wordString.indexOf("\"") >= 0) {
 					i = parseString(wordArrayList, i);
-					
+
 				} else if (wordString.indexOf('\'') >= 0) {
-					//单个字符
+					// 单个字符
 					i = parseChar(wordArrayList, i);
-					
+
 				} else {
 					i = parseDefault(wordArrayList, i);
 				}
@@ -131,32 +117,33 @@ public class JavaParser extends CodeParser {
 			String leftString = wordString.substring(0, beginIndex);
 			wordArrayList.set(i, leftString);
 			wordArrayList.add(i + 1, commentString);
-			//简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
+			// 简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
 			i--;
 		} else {
 			// 接下来都是字符串内容
-			
-			//屏蔽第一个"字符
+
+			// 屏蔽第一个"字符
 			endIndex = 1;
 			do {
-				endIndex = wordString.indexOf('\'',  endIndex);
+				endIndex = wordString.indexOf('\'', endIndex);
 				if (endIndex > 0 && wordString.charAt(endIndex - 1) == '\\') {
 					endIndex++;
-					//不是结束符，转义字符
+					// 不是结束符，转义字符
 					continue;
-				} else if (endIndex > 0 && wordString.charAt(endIndex - 1) != '\\') {
+				} else if (endIndex > 0
+						&& wordString.charAt(endIndex - 1) != '\\') {
 					break;
 				} else if (endIndex == 0) {
 					break;
 				}
-			
+
 				ParsedCode parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
 				parsedCode.codeColor_ = color;
 				parsedCode.codeFont_ = fontMap_.get("Char");
 				parsedResult_.add(parsedCode);
 
-				if (wordArrayList.size() > i+1) {
+				if (wordArrayList.size() > i + 1) {
 					wordString = wordArrayList.get(++i);
 				} else {
 					break;
@@ -173,13 +160,13 @@ public class JavaParser extends CodeParser {
 			parsedCode.codeColor_ = color;
 			parsedCode.codeFont_ = fontMap_.get("Char");
 			parsedResult_.add(parsedCode);
-			
+
 			if (wordString.length() > beginIndex) {
 				String remainString = wordString.substring(endIndex);
 				wordArrayList.add(i + 1, remainString);
 			}
 		}
-		
+
 		return i;
 	}
 
@@ -194,33 +181,34 @@ public class JavaParser extends CodeParser {
 			String leftString = wordString.substring(0, beginIndex);
 			wordArrayList.set(i, leftString);
 			wordArrayList.add(i + 1, commentString);
-			//简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
+			// 简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
 			i--;
 		} else {
 			// 接下来都是字符串内容
-			
-			//屏蔽第一个"字符
+
+			// 屏蔽第一个"字符
 			endIndex = 1;
 			do {
-				
-				endIndex = wordString.indexOf("\"",  endIndex);
+
+				endIndex = wordString.indexOf("\"", endIndex);
 				if (endIndex > 0 && wordString.charAt(endIndex - 1) == '\\') {
 					endIndex++;
-					//不是结束符，转义字符
+					// 不是结束符，转义字符
 					continue;
-				} else if (endIndex > 0 && wordString.charAt(endIndex - 1) != '\\') {
+				} else if (endIndex > 0
+						&& wordString.charAt(endIndex - 1) != '\\') {
 					break;
 				} else if (endIndex == 0) {
 					break;
 				}
-			
+
 				ParsedCode parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
 				parsedCode.codeColor_ = color;
 				parsedCode.codeFont_ = fontMap_.get("String");
 				parsedResult_.add(parsedCode);
 
-				if (wordArrayList.size() > i+1) {
+				if (wordArrayList.size() > i + 1) {
 					wordString = wordArrayList.get(++i);
 				} else {
 					break;
@@ -237,13 +225,13 @@ public class JavaParser extends CodeParser {
 			parsedCode.codeColor_ = color;
 			parsedCode.codeFont_ = fontMap_.get("String");
 			parsedResult_.add(parsedCode);
-			
+
 			if (wordString.length() > beginIndex) {
 				String remainString = wordString.substring(endIndex);
 				wordArrayList.add(i + 1, remainString);
 			}
 		}
-		
+
 		return i;
 	}
 
@@ -257,7 +245,7 @@ public class JavaParser extends CodeParser {
 			String leftString = wordString.substring(0, beginIndex);
 			wordArrayList.set(i, leftString);
 			wordArrayList.add(i + 1, commentString);
-			//简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
+			// 简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
 			i--;
 		} else {
 			// 接下来都是注释内容
@@ -267,11 +255,11 @@ public class JavaParser extends CodeParser {
 				parsedCode.codeColor_ = color;
 				parsedCode.codeFont_ = fontMap_.get("MultiLineComment");
 				parsedResult_.add(parsedCode);
-				
+
 				wordString = wordArrayList.get(++i);
 			}
-			
-			//到这里注释块结束，但是结束符还没弄进去
+
+			// 到这里注释块结束，但是结束符还没弄进去
 			beginIndex = wordString.indexOf("*/") + 2;
 			String leftString = wordString.substring(0, beginIndex);
 			wordArrayList.set(i, leftString);
@@ -285,65 +273,52 @@ public class JavaParser extends CodeParser {
 				wordArrayList.add(i + 1, remainString);
 			}
 		}
-		
+
 		return i;
 	}
 
-	private int parseDocumentComment(ArrayList<String> wordArrayList, int i) {
-		Color color = this.colorMap_.get("DocumentComment");
-		String wordString = wordArrayList.get(i);
-		int beginIndex = wordString.indexOf("/**");
-		String commentString = wordString.substring(beginIndex);
-		if (beginIndex > 0) {
-			// 注释不是在单词第一个字母
-			String leftString = wordString.substring(0, beginIndex);
-			wordArrayList.set(i, leftString);
-			wordArrayList.add(i + 1, commentString);
-			//简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
-			i--;
-		} else {
-			// 接下来都是注释内容
-			while (wordString.indexOf("*/") < 0) {
-				ParsedCode parsedCode = new ParsedCode();
-				parsedCode.codeString_ = wordString;
-				parsedCode.codeColor_ = color;
-				parsedCode.codeFont_ = fontMap_.get("DocumentComment");
-				parsedResult_.add(parsedCode);
-				
-				wordString = wordArrayList.get(++i);
+	private String getKeyWord(String wordString) {
+		for (String keyWorkString : this.keyWordList_) {
+			if (wordString.indexOf(keyWorkString) >= 0) {
+				return keyWorkString;
 			}
-			
-			//到这里注释块结束，但是结束符还没弄进去
-			beginIndex = wordString.indexOf("*/") + 2;
-			String leftString = wordString.substring(0, beginIndex);
-			wordArrayList.set(i, leftString);
-			ParsedCode parsedCode = new ParsedCode();
-			parsedCode.codeString_ = leftString;
-			parsedCode.codeColor_ = color;
-			parsedCode.codeFont_ = fontMap_.get("DocumentComment");
-			parsedResult_.add(parsedCode);
-			if (wordString.length() > beginIndex) {
-				String remainString = wordString.substring(beginIndex);
-				wordArrayList.add(i + 1, remainString);
-			}
-			
 		}
-		
-		return i;
-	}
 
+		return null;
+	}
 
 	private int parseKeyWord(ArrayList<String> wordArrayList, int i) {
-		//关键字
+		// 关键字
+
 		String wordString = wordArrayList.get(i);
-		ParsedCode parsedCode = new ParsedCode();
-		parsedCode.codeString_ = wordString;
-		parsedCode.codeColor_ = colorMap_.get("KeyWord");
-		parsedCode.codeFont_ = fontMap_.get("KeyWord");
-		parsedResult_.add(parsedCode);
+		String keyWordString = getKeyWord(wordString);
+		int keyWordIndex = wordString.indexOf(keyWordString);
+		if (keyWordIndex == 0) {
+			// 在开始位置
+			ParsedCode parsedCode = new ParsedCode();
+			parsedCode.codeString_ = keyWordString;
+			parsedCode.codeColor_ = colorMap_.get("KeyWord");
+			parsedCode.codeFont_ = fontMap_.get("KeyWord");
+			parsedResult_.add(parsedCode);
+
+			if (keyWordString.length() < wordString.length()) {
+				// 还有剩下的
+				String remainString = wordString.substring(keyWordString
+						.length());
+				wordArrayList.add(i + 1, remainString);
+			}
+		} else {
+			// 不是开始位置，简单处理一下返回
+			String leftString = wordString.substring(0, keyWordIndex);
+			String rightString = wordString.substring(keyWordIndex);
+			wordArrayList.set(i, leftString);
+			wordArrayList.add(i + 1, rightString);
+			i--;
+		}
+
 		return i;
 	}
-	
+
 	private int parseLineComment(ArrayList<String> wordArrayList, int i) {
 		// 注释块1
 		String wordString = wordArrayList.get(i);
@@ -357,8 +332,8 @@ public class JavaParser extends CodeParser {
 			String leftString = wordString.substring(0, beginIndex);
 			wordArrayList.set(i, leftString);
 			wordArrayList.add(i + 1, commentString);
-			
-			//简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
+
+			// 简单处理下就好了，返回去重新分析，没准刚刚分出来的是关键字
 			i--;
 		} else {
 			parsedCode.codeColor_ = colorMap_.get("LineComment");
@@ -371,7 +346,7 @@ public class JavaParser extends CodeParser {
 				} else {
 					break;
 				}
-				
+
 				parsedCode = new ParsedCode();
 				parsedCode.codeString_ = wordString;
 				parsedCode.codeColor_ = colorMap_.get("LineComment");
@@ -436,7 +411,6 @@ public class JavaParser extends CodeParser {
 		}
 	}
 
-
 	void initFontHashMap() {
 		// 这里初始化颜色哈希表和字体哈希表
 		NodeList colorNodeList = fontNode_.getChildNodes();
@@ -455,12 +429,12 @@ public class JavaParser extends CodeParser {
 			}
 		}
 	}
-	
+
 	void initXmlConfig() throws ParserConfigurationException, SAXException,
 			IOException {
 		// 下面是初始化xml文件
 		InputStream inputStream = JavaParser.class
-				.getResourceAsStream("/res/JavaParserConfig.xml");
+				.getResourceAsStream("/res/CppParserConfig.xml");
 		documentBuilderFactory_ = DocumentBuilderFactory.newInstance();
 		documentBuilder_ = documentBuilderFactory_.newDocumentBuilder();
 		document_ = documentBuilder_.parse(inputStream);
@@ -500,12 +474,13 @@ public class JavaParser extends CodeParser {
 
 	public static void main(String[] args) {
 		try {
-			JavaParser parser = new JavaParser();
-			parser.init(new File("temp/javatest.java"));
+			CppParser parser = new CppParser();
+			parser.init(new File("temp/cpptest.cpp"));
 			parser.parse();
 			ArrayList<ParsedCode> resultArrayList = parser.getParserResult();
 			for (int i = 0; i < resultArrayList.size(); i++) {
-				System.out.println("i = " + i + ": ---------------------【" + resultArrayList.get(i) + "】----------------");
+				System.out.println("i = " + i + ": ---------------------【"
+						+ resultArrayList.get(i) + "】----------------");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

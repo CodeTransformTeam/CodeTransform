@@ -1,0 +1,86 @@
+<?xml	version="1.0"   encoding="utf-8"?>
+<Config>
+	<KeyWordSet>   
+		<KeyWord name="asm" />
+		<KeyWord name="do" />
+		<KeyWord name="if" />
+		<KeyWord name="return" />
+		<KeyWord name="typedef" />
+		<KeyWord name="auto" />
+		<KeyWord name="double" />
+		<KeyWord name="inline" />
+		<KeyWord name="short" />
+		<KeyWord name="typeid" />
+		<KeyWord name="bool" />
+		<KeyWord name="dynamic_cast" />
+		<KeyWord name="int" />
+		<KeyWord name="signed" />
+		<KeyWord name="typename" />
+		<KeyWord name="break" />
+		<KeyWord name="else" />
+		<KeyWord name="long" />
+		<KeyWord name="sizeof" />
+		<KeyWord name="union" />
+		<KeyWord name="case" />
+		<KeyWord name="enum" />
+		<KeyWord name="mutable" />
+		<KeyWord name="static" />
+		<KeyWord name="unsigned" />
+		<KeyWord name="catch" />
+		<KeyWord name="explicit" />
+		<KeyWord name="namespace" />
+		<KeyWord name="static_cast" />
+		<KeyWord name="using" />
+		<KeyWord name="char" />
+		<KeyWord name="export" />
+		<KeyWord name="new" />
+		<KeyWord name="struct" />
+		<KeyWord name="virtual" />
+		<KeyWord name="class" />
+		<KeyWord name="extern" />
+		<KeyWord name="operator" />
+		<KeyWord name="switch" />
+		<KeyWord name="void" />
+		<KeyWord name="const" />
+		<KeyWord name="false" />
+		<KeyWord name="private" />
+		<KeyWord name="template" />
+		<KeyWord name="volatile" />
+		<KeyWord name="const_cast" />
+		<KeyWord name="float" />
+		<KeyWord name="protected" />
+		<KeyWord name="this" />
+		<KeyWord name="wchar_t" />
+		<KeyWord name="continue" />
+		<KeyWord name="for" />
+		<KeyWord name="public" />
+		<KeyWord name="throw" />
+		<KeyWord name="while" />
+		<KeyWord name="default" />
+		<KeyWord name="friend" />
+		<KeyWord name="register" />
+		<KeyWord name="true" />
+		<KeyWord name="delete" />
+		<KeyWord name="goto" />
+		<KeyWord name="reinterpret_cast" />
+		<KeyWord name="try" />
+	</KeyWordSet>   
+	<ColorSet>
+		<Color name="KeyWord" value="#0000FF" />
+		<Color name="LineComment" value="#000000" />
+		<Color name="LineComment" value="#3F7F5F" />
+		<Color name="MultiLineComment" value="#3F7F5F" />
+		<Color name="String" value="#808080" />
+		<Color name="Char" value="#0000C0" />
+		<Color name="Default" value="#000000" />
+	</ColorSet>
+	<FontSet>
+		<Font name="KeyWord" value="normal normal bold medium sans-serif" />
+		<Font name="LineComment" value="normal normal normal medium sans-serif" />
+		<Font name="LineComment" value="italic normal normal medium sans-serif" />
+		<Font name="MultiLineComment" value="normal normal normal medium sans-serif" />
+		<Font name="String" value="normal normal normal medium sans-serif" />
+		<Font name="Char" value="normal normal normal medium sans-serif" />
+		<Font name="Default" value="normal normal normal medium sans-serif" />
+	</FontSet>
+</Config>
