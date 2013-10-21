@@ -7,8 +7,8 @@ import java.util.logging.Logger;
 import javax.swing.SwingWorker;
 import javax.swing.tree.DefaultTreeModel;
 
-import CodeTransform.FileManager.FileTree;
-import CodeTransform.FileManager.FileTree.JFileTreeNode;
+import CodeTransform.FileManagerPanel.FileTree;
+import CodeTransform.FileManagerPanel.FileTree.JFileTreeNode;
 
 /**
  * 展开节点的后台线程

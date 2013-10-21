@@ -17,29 +17,25 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
 
-public class FileManager extends JPanel{
-	/**
-	 * 这个东西是给 序列化 校验用的
-	 */
+public class FileManagerPanel extends JPanel{
+
 	private static final long serialVersionUID = 1L;
-	private JPanel leftPanel_ = new JPanel();
-	private JPanel rightPanel_ = new JPanel();
-	private FileTree tree;
-	private FileList fileList;
-	public FileManager() throws FileNotFoundException{
+	private FileTree tree_;
+	private FileListPanel fileListPanel_;
+	
+	public FileManagerPanel() throws FileNotFoundException{
 		setLayout(new BorderLayout());
-		add(leftPanel_,BorderLayout.WEST);
-		add(rightPanel_,BorderLayout.EAST);
-		/**
-		 * 创建根节点 
-		 */
-		tree = new FileTree();
-		JScrollPane scrollPanel = new JScrollPane(tree);
-		scrollPanel.setPreferredSize(new Dimension(220,400));
-		leftPanel_.add(scrollPanel);
 		
-		fileList = new FileList();
-		rightPanel_.add(fileList);
+		 // 创建根节点 
+		tree_ = new FileTree();
+		JScrollPane scrollPanel = new JScrollPane(tree_);
+		scrollPanel.setPreferredSize(new Dimension(250, 600));
+		add(scrollPanel, BorderLayout.WEST);
+		
+		fileListPanel_ = new FileListPanel();
+		fileListPanel_.setPreferredSize(new Dimension(500, 600));
+		add(fileListPanel_, BorderLayout.EAST);
+		
 	}
 	class FileTree extends JTree implements TreeSelectionListener{
 		/**
@@ -50,7 +46,6 @@ public class FileManager extends JPanel{
 		public static final boolean DIRECTORY_NO_FILE = false;//不含有文件节点
 		private static final String DESKTOP_EN = "Desktop";
 		private static final String DESKTOP_ZH = "我的电脑";
-//	    private static final String DISK_EN = "Disk";
 	    private static final String DISK_ZH = "磁盘";
 	    private JFileTreeNode systemNode = null;
 	    private JFileTreeNode rootNode;
@@ -100,16 +95,16 @@ public class FileManager extends JPanel{
 		public void valueChanged(TreeSelectionEvent arg0) {
 			// TODO Auto-generated method stub
 			DefaultMutableTreeNode node = (DefaultMutableTreeNode)
-                    tree.getLastSelectedPathComponent();
+                    tree_.getLastSelectedPathComponent();
 			if (node == null) return;
-			fileList.removeFile();
+			fileListPanel_.removeFile();
 			Object nodeInfo = node.getUserObject();
 			File file = new File(nodeInfo.toString());
 			if(file.isDirectory()) {
 				File[] files = file.listFiles();
 				for(int i = 0;i<files.length;i++) {
 					if(!files[i].isHidden()) {
-						fileList.addFile(files[i].getName());
+						fileListPanel_.addFile(files[i].getName());
 					}
 				}
 			}
