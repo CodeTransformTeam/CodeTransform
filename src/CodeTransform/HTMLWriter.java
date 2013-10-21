@@ -42,7 +42,7 @@ public class HTMLWriter {
 		src = src.replace("&", "&amp;");
 		src = src.replace(" ", "&nbsp;");
 		src = src.replace("\r\n", "&nbsp;\r\n");
-		src = src.replace("\t", "&nbsp;&nbsp;");
+		src = src.replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
 		src = src.replace("<", "&lt;");
 		src = src.replace(">", "&gt;");
 
@@ -61,7 +61,7 @@ public class HTMLWriter {
 
 			for (int i = 0; i < parsedCodes.size(); i++) {
 				ParsedCode parsedCode = parsedCodes.get(i);
-				fileOutputStream.write("			<li>\r\n".getBytes());
+				fileOutputStream.write("			<li style=\"border-left: 3px solid #999;\">\r\n".getBytes());
 				String colorString = ColorConverter
 						.Color2String(parsedCode.codeColor_);
 				String fontString = parsedCode.codeFont_;
