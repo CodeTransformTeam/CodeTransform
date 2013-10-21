@@ -20,7 +20,6 @@ public class FileNodeExpansion extends SwingWorker<Boolean, Void> {
     
     public FileNodeExpansion(JFileTreeNode node,
 			DefaultTreeModel jFileTreeModel) {
-		// TODO Auto-generated constructor stub
     	this.node = node;
     	this.jFileTreeModel = jFileTreeModel;
 	}

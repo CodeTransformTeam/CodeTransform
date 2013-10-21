@@ -37,6 +37,7 @@ public class FileManagerPanel extends JPanel{
 		add(fileListPanel_, BorderLayout.EAST);
 		
 	}
+	
 	class FileTree extends JTree implements TreeSelectionListener{
 		/**
 		 * 序列化校验
@@ -65,8 +66,9 @@ public class FileManagerPanel extends JPanel{
 	    }
 	    
 	    public FileTree(File file, boolean model) {
+	    	System.out.println("FileManagerPanel.FileTree.FileTree()");
 	        this.model = model;
-//	        putClientProperty("JTree.lineStyle", "Angled");
+
 	        //建立默认系统文件树 
 	        if (file == null || !file.exists()) {
 	            file = new File(System.getProperty("user.home") + File.separator + DESKTOP_EN);
@@ -104,7 +106,7 @@ public class FileManagerPanel extends JPanel{
 				File[] files = file.listFiles();
 				for(int i = 0;i<files.length;i++) {
 					if(!files[i].isHidden()) {
-						fileListPanel_.addFile(files[i].getName());
+						fileListPanel_.addFile(files[i]);
 					}
 				}
 			}
@@ -155,7 +157,6 @@ public class FileManagerPanel extends JPanel{
 	         * 节点展开
 	         * @return 展开是否含有子节点
 	         */
-
 	        public boolean expand() {
 	            this.removeAllChildren();
 	            if (this.equals(systemNode)) {
