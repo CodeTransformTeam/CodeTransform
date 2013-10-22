@@ -101,6 +101,9 @@ public class FileManagerPanel extends JPanel{
 			fileListPanel_.removeFile();
 			Object nodeInfo = node.getUserObject();
 			File file = new File(nodeInfo.toString());
+			if(file.isFile()) {
+				fileListPanel_.addFile(file);
+			}
 			if(file.isDirectory()) {
 				File[] files = file.listFiles();
 				for(int i = 0;i<files.length;i++) {
