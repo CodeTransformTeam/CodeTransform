@@ -61,7 +61,29 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		if(list_.getSelectedIndex() != -1) {
+           if(e.getClickCount() == 2) {
+        	   doubleClick(list_.getSelectedValue());
+           }
+		}
 	}
+	private void doubleClick(String selectedValue) {
+		// TODO Auto-generated method stub
+		int index = list_.locationToIndex(getMousePosition());
+		File file = new File(fileArrayList_.get(index).toString());
+		if(!file.isFile()) {
+			this.removeFile();
+			if(file.isDirectory()) {
+				File[] files = file.listFiles();
+				for(int i = 0;i<files.length;i++) {
+					if(!files[i].isHidden()) {
+						this.addFile(files[i]);
+					}
+				}
+			}
+		}
+	}
+
 	@Override
 	public void mouseEntered(MouseEvent e) {
 	}
