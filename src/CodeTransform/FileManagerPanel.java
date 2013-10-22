@@ -2,6 +2,8 @@ package CodeTransform;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -10,8 +12,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.event.TreeExpansionEvent;
 import javax.swing.event.TreeExpansionListener;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
@@ -38,7 +38,7 @@ public class FileManagerPanel extends JPanel{
 		
 	}
 	
-	class FileTree extends JTree implements TreeSelectionListener{
+	class FileTree extends JTree implements MouseListener{
 		/**
 		 * 序列化校验
 		 */
@@ -82,7 +82,7 @@ public class FileManagerPanel extends JPanel{
 	        jFileTreeModel = new DefaultTreeModel(rootNode);
 	        setModel(jFileTreeModel);
 	        addTreeExpansionListener(new JTreeExpansionListener());
-	        addTreeSelectionListener(this);
+	        addMouseListener(this);
 	    }
 
 	    public String getPathName(TreePath path) {
@@ -92,27 +92,6 @@ public class FileManagerPanel extends JPanel{
 	        }
 	        return null;
 	    }
-	    @Override
-		public void valueChanged(TreeSelectionEvent arg0) {
-			// TODO Auto-generated method stub
-			DefaultMutableTreeNode node = (DefaultMutableTreeNode)
-                    tree_.getLastSelectedPathComponent();
-			if (node == null) return;
-			fileListPanel_.removeFile();
-			Object nodeInfo = node.getUserObject();
-			File file = new File(nodeInfo.toString());
-			if(file.isFile()) {
-				fileListPanel_.addFile(file);
-			}
-			if(file.isDirectory()) {
-				File[] files = file.listFiles();
-				for(int i = 0;i<files.length;i++) {
-					if(!files[i].isHidden()) {
-						fileListPanel_.addFile(files[i]);
-					}
-				}
-			}
-		}
 	    /**
 	     * 文件树节点
 	     */
@@ -204,6 +183,52 @@ public class FileManagerPanel extends JPanel{
 	        public void treeCollapsed(TreeExpansionEvent e) {
 	        }
 	    }
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode)
+                    tree_.getLastSelectedPathComponent();
+			if (node == null) return;
+			fileListPanel_.removeFile();
+			Object nodeInfo = node.getUserObject();
+			File file = new File(nodeInfo.toString());
+			if(file.isFile()) {
+				fileListPanel_.addFile(file);
+			}
+			if(file.isDirectory()) {
+				File[] files = file.listFiles();
+				for(int i = 0;i<files.length;i++) {
+					if(!files[i].isHidden()) {
+						fileListPanel_.addFile(files[i]);
+					}
+				}
+			}
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
 
 	}
 }
