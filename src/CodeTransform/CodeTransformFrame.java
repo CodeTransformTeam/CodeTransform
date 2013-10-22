@@ -14,6 +14,7 @@ public class CodeTransformFrame extends JFrame {
 		setSize(800, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		setResizable(false);
 		
 		setLayout(new BorderLayout());
 		add(topFileManagerPanel_,BorderLayout.CENTER);

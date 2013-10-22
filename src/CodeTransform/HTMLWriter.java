@@ -48,7 +48,7 @@ public class HTMLWriter {
 
 		return src;
 	}
-
+	
 	private void writeBody(FileOutputStream fileOutputStream) {
 		ArrayList<ParsedCode> parsedCodes = parser_.getParserResult();
 		try {
@@ -160,14 +160,14 @@ public class HTMLWriter {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		CodeParser parser = new CppParser();
-		parser.init(new File("temp/cpptest.cpp"));
-		parser.parse();
-
-		HTMLWriter writer = new HTMLWriter(parser);
-		writer.write(new File("CppTest.html"));
-
-	}
+//	public static void main(String[] args) {
+//		CodeParser parser = new CppParser();
+//		parser.init(new File("temp/cpptest.cpp"));
+//		parser.parse();
+//
+//		HTMLWriter writer = new HTMLWriter(parser);
+//		writer.write(new File("CppTest.html"));
+//
+//	}
 
 }
