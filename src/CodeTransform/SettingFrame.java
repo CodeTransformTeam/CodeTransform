@@ -42,7 +42,6 @@ public class SettingFrame extends JFrame implements ItemListener{
 		createNorthPanel();
 		createCenterPanel();
 		createSouthPanel();
-
 	}
 	
 	private void createNorthPanel() {
