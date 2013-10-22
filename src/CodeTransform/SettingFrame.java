@@ -82,6 +82,7 @@ public class SettingFrame extends JFrame implements ItemListener{
 	private void createCenterPanel() {
 		JPanel centerPanel = new JPanel();
 		centerPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 10));
+		//centerPanel.setBackground(Color.lightGray);
 		add(centerPanel, BorderLayout.CENTER);
 		
 		JPanel blankPanel = new JPanel();
@@ -140,18 +141,32 @@ public class SettingFrame extends JFrame implements ItemListener{
 		blankPanel.setPreferredSize(new Dimension(20, 30));
 		centerPanel.add(blankPanel);
 		
-		label = new JLabel("字体：");
+		label = new JLabel("名称：");
 		label.setPreferredSize(new Dimension(60, 30));
 		centerPanel.add(label);
 		
 		textField = new JTextField("sans-serif");
 		textField.setPreferredSize(new Dimension(120, 30));
 		centerPanel.add(textField);
+		
+		
+		blankPanel = new JPanel();
+		blankPanel.setPreferredSize(new Dimension(205, 30));
+		centerPanel.add(blankPanel);
+		
+		label = new JLabel("大小：");
+		label.setPreferredSize(new Dimension(60, 30));
+		centerPanel.add(label);
+		
+		textField = new JTextField("medium");
+		textField.setPreferredSize(new Dimension(120, 30));
+		centerPanel.add(textField);
 	}
 	
 	private void createSouthPanel() {
 		JPanel southPanel = new JPanel();
-		southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 10));
+		southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 5));
+		//southPanel.setBackground(Color.black);
 		add(southPanel, BorderLayout.SOUTH);
 				
 		transformButton_ = new JButton("转换");
