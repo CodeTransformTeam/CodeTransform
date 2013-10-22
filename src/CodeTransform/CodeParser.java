@@ -45,6 +45,21 @@ public abstract class CodeParser {
 	 */
 	abstract ArrayList <ParsedCode>	getParserResult();
 	
+	/**
+	 * 调用这个方法获可以对那些字段设置颜色，
+	 * 例如，关键字，字符串
+	 * @return 
+	 * 成功，返回字符串数组
+	 * 失败，返回null
+	 */
+	String[] getOptionItems() 	{
+		return new String[]{"关键字", "字符串"};
+	}
+	
+	Color getColorByOptionName(String optionString) {
+		return Color.WHITE;
+	}
+	
 	private boolean isCharPrintable(byte ch) {
 		if (ch > 32 && ch < 127) {
 			return true;

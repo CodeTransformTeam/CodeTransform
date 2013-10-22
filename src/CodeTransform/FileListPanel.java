@@ -114,7 +114,10 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.menuItem_) {
-			System.out.println("用户点击了 转换菜单");
+			int index = list_.getSelectedIndex();
+			File file = fileArrayList_.get(index);
+			SettingFrame settingFrame = new SettingFrame(file);
+			settingFrame.setVisible(true);
 		}
 	}
 }

@@ -66,7 +66,6 @@ public class FileManagerPanel extends JPanel{
 	    }
 	    
 	    public FileTree(File file, boolean model) {
-	    	System.out.println("FileManagerPanel.FileTree.FileTree()");
 	        this.model = model;
 
 	        //建立默认系统文件树 
