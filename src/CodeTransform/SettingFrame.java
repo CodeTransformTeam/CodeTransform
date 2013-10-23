@@ -32,12 +32,13 @@ public class SettingFrame extends JFrame implements ItemListener{
 		
 		file_ = file;
 		
-		String prefix = getFilePrefix(file);
-		if (prefix.equalsIgnoreCase(".cpp") || prefix.equalsIgnoreCase(".c") || prefix.equalsIgnoreCase(".h")) {
-			parser_ = new CppParser();
-		} else if (prefix.equalsIgnoreCase(".java")) {
-			parser_ = new JavaParser();
-		}
+			String prefix = getFilePrefix(file);
+			if (prefix.equalsIgnoreCase(".cpp") || prefix.equalsIgnoreCase(".c") || prefix.equalsIgnoreCase(".h")) {
+				parser_ = new CppParser();
+			} else if (prefix.equalsIgnoreCase(".java")) {
+				parser_ = new JavaParser();
+			}
+
 		
 		createNorthPanel();
 		createCenterPanel();

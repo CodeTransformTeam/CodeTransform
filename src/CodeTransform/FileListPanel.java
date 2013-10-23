@@ -67,8 +67,8 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
            }
 		}
 	}
+	
 	private void doubleClick(String selectedValue) {
-		// TODO Auto-generated method stub
 		int index = list_.locationToIndex(getMousePosition());
 		File file = new File(fileArrayList_.get(index).toString());
 		if(!file.isFile()) {
@@ -83,28 +83,10 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
 			}
 		}
 	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-	}
-	@Override
-	public void mouseExited(MouseEvent e) {
-	}
 	
-	@Override
-	public void mousePressed(MouseEvent e) {
-		if (e.isPopupTrigger()) {
-			int index = list_.locationToIndex(e.getPoint());
-			list_.setSelectedIndex(index);
-			
-			if (isKnownFile(fileArrayList_.get(index))) {
-				popupMenu_.show(list_, e.getX(), e.getY());
-			}
-		}
-	}
-
 	private boolean isKnownFile(File file) {
 		String fileNameString = file.getName();
+		System.out.println(fileNameString);
 		int index = fileNameString.lastIndexOf(".");
 		if (index < 0) {
 			return false;
@@ -120,14 +102,81 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
 		
 		return false;
 	}
+	
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if (e.isPopupTrigger()) {
+			int[] indices = list_.getSelectedIndices();
+			int index = list_.locationToIndex(e.getPoint());
+			
+			int[] indicesNew = indices;
+			int i = 0; 
+			for (i = 0; i < indices.length; i++) {
+				if (indices[i] == index) {
+					//包含了这个
+					break;
+				}
+			}
+			
+			if (i >= indices.length) {
+				indicesNew = new int[indices.length + 1];
+				System.arraycopy(indices, 0, indicesNew, 0, indices.length);
+				indicesNew[indices.length] = index;
+				list_.setSelectedIndices(indicesNew);
+			}
+			
+			for (i = 0; i < indicesNew.length; i++) {
+				index = indicesNew[i];
+				if (!isKnownFile(fileArrayList_.get(index))) {
+					break;
+				}
+			}
+			
+			//所有文件都认识
+			if (i >= indicesNew.length) {
+				popupMenu_.show(list_, e.getX(), e.getY());
+			}
+		}
+	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if (e.isPopupTrigger()) {
+			int[] indices = list_.getSelectedIndices();
 			int index = list_.locationToIndex(e.getPoint());
-			list_.setSelectedIndex(index);
 			
-			if (isKnownFile(fileArrayList_.get(index))) {
+			int[] indicesNew = indices;
+			int i = 0; 
+			for (i = 0; i < indices.length; i++) {
+				if (indices[i] == index) {
+					//包含了这个
+					break;
+				}
+			}
+			
+			if (i >= indices.length) {
+				indicesNew = new int[indices.length + 1];
+				System.arraycopy(indices, 0, indicesNew, 0, indices.length);
+				indicesNew[indices.length] = index;
+				list_.setSelectedIndices(indicesNew);
+			}
+			
+			for (i = 0; i < indicesNew.length; i++) {
+				index = indicesNew[i];
+				if (!isKnownFile(fileArrayList_.get(index))) {
+					break;
+				}
+			}
+			
+			//所有文件都认识
+			if (i >= indicesNew.length) {
 				popupMenu_.show(list_, e.getX(), e.getY());
 			}
 		}
@@ -136,9 +185,15 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.menuItem_) {
-			int index = list_.getSelectedIndex();
-			File file = fileArrayList_.get(index);
-			SettingFrame settingFrame = new SettingFrame(file);
+			int[] indices = list_.getSelectedIndices();
+			File[] files = new File[indices.length];
+			
+			for (int i = 0; i < files.length; i++) {
+				int index = indices[i];
+				files[i] = fileArrayList_.get(index);
+			}
+			
+			SettingFrame settingFrame = new SettingFrame(files[0]);
 			settingFrame.setVisible(true);
 		}
 	}
