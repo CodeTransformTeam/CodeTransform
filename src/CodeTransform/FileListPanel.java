@@ -15,7 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 
-public class FileListPanel extends JPanel implements MouseListener, ActionListener{
+import CodeTransform.FileManagerPanel.FileTree;
+
+public class FileListPanel extends JPanel implements MouseListener, ActionListener,InterestingEvent{
 
 	private static final long serialVersionUID = 1L;
 	private JList<String> list_;
@@ -24,7 +26,17 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
 	private JPopupMenu popupMenu_;
 	private JMenuItem menuItem_;
 	
+	private FileTree tree_;
+	private File path;
+
 	public FileListPanel() {
+		
+	}
+	
+	public FileListPanel(FileTree tree_) {
+		// TODO Auto-generated constructor stub
+		this.tree_ = tree_;
+		
 		model_ = new DefaultListModel<String>();
 		fileArrayList_ = new ArrayList<File>();
 		
@@ -46,7 +58,7 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
 		JScrollPane scrollPanel = new JScrollPane(list_);
 		this.add(scrollPanel, BorderLayout.CENTER);
 	}
-	
+
 	public void addFile(File file) {
 		fileArrayList_.add(file);
 		
@@ -59,18 +71,24 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
 		model_.removeAllElements();
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(MouseEvent e){
 		if(list_.getSelectedIndex() != -1) {
-           if(e.getClickCount() == 2) {
-        	   doubleClick(list_.getSelectedValue());
-           }
+			if(e.getButton()==e.BUTTON1) {
+				if(e.getClickCount() == 2) {
+					doubleClick();
+				}
+			}
 		}
 	}
-	
-	private void doubleClick(String selectedValue) {
+	private void doubleClick() {
+		// TODO Auto-generated method stub
 		int index = list_.locationToIndex(getMousePosition());
 		File file = new File(fileArrayList_.get(index).toString());
+		this.setPath(fileArrayList_.get(index));
+		// 接口回调
+		this.solveProblem();
 		if(!file.isFile()) {
 			this.removeFile();
 			if(file.isDirectory()) {
@@ -83,7 +101,15 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
 			}
 		}
 	}
-	
+
+	private void setPath(File path) {
+		// TODO Auto-generated method stub
+		this.path = path;
+	}
+	private File getPath() {
+		return path;
+	}
+
 	private boolean isKnownFile(File file) {
 		String fileNameString = file.getName();
 		System.out.println(fileNameString);
@@ -196,5 +222,16 @@ public class FileListPanel extends JPanel implements MouseListener, ActionListen
 				settingFrame.setVisible(true);
 			}
 		}
+	}
+	@Override
+	public void solve() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void solveProblem() {
+		// TODO Auto-generated method stub
+		File path = this.getPath();
+		tree_.expandTree(path,false);
 	}
 }
