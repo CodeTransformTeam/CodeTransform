@@ -22,7 +22,6 @@ public class FileManagerPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private FileTree tree_;
 	private FileListPanel fileListPanel_;
-	
 	public FileManagerPanel() throws FileNotFoundException{
 		setLayout(new BorderLayout());
 		
@@ -32,7 +31,8 @@ public class FileManagerPanel extends JPanel{
 		scrollPanel.setPreferredSize(new Dimension(250, 600));
 		add(scrollPanel, BorderLayout.WEST);
 		
-		fileListPanel_ = new FileListPanel();
+		
+		fileListPanel_ = new FileListPanel(tree_);
 		fileListPanel_.setPreferredSize(new Dimension(500, 600));
 		add(fileListPanel_, BorderLayout.EAST);
 		
@@ -62,7 +62,7 @@ public class FileManagerPanel extends JPanel{
 	    }
 
 	    public FileTree(File file) {
-	       // this(file, DIRECTORY_AND_FILE);
+	        this(file, DIRECTORY_AND_FILE);
 	    }
 	    
 	    public FileTree(File file, boolean model) {
@@ -228,6 +228,31 @@ public class FileManagerPanel extends JPanel{
 		public void mouseReleased(MouseEvent arg0) {
 			// TODO Auto-generated method stub
 			
+		}
+
+		public void expandTree(File path,boolean expanded) {
+			// TODO Auto-generated method stub
+			int i;
+			if(path !=null){ 		
+				DefaultMutableTreeNode node = (DefaultMutableTreeNode)
+	                    tree_.getLastSelectedPathComponent();
+				tree_.expandRow(getMinSelectionRow());
+				if (node == null) return;
+				Object nodeInfo = node.getUserObject();
+				File file = new File(nodeInfo.toString());
+				File[] files = file.listFiles();
+				System.out.println(nodeInfo.toString());
+				for(i=0;i<files.length;i++) {
+					if(files[i].toString()== path.toString()) {
+						System.out.println(files[i].toString());
+						break; 
+					}
+				}
+				int rows = 0;
+				rows +=getMinSelectionRow();
+				tree_.expandRow(rows+2);
+				//tree_.scrollPathToVisible(path);
+			}
 		}
 
 	}
