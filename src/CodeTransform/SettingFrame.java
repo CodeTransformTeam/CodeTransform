@@ -98,7 +98,7 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel,
 		JLabel label = new JLabel("关键字颜色：");
 		southPanel.add(label);
 
-		JTextField textField = new JTextField("");
+		JTextField textField = new JTextField("#7F0055");
 		textField.setPreferredSize(new Dimension(80, 30));
 		southPanel.add(textField);
 		this.mKeyWordColorTextfield_ = textField;
@@ -106,7 +106,7 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel,
 		label = new JLabel("字体名称：");
 		southPanel.add(label);
 
-		textField = new JTextField("");
+		textField = new JTextField("sans-serif");
 		textField.setPreferredSize(new Dimension(80, 30));
 		southPanel.add(textField);
 		this.mFontNameTextfield_ = textField;
@@ -114,7 +114,7 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel,
 		label = new JLabel("字体大小：");
 		southPanel.add(label);
 
-		textField = new JTextField("");
+		textField = new JTextField("medium");
 		textField.setPreferredSize(new Dimension(80, 30));
 		southPanel.add(textField);
 		this.mFontSizeTextfield_ = textField;
@@ -373,7 +373,8 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel,
 	}
 
 	@Override
-	public void setValueAt(Object arg0, int arg1, int arg2) {
+	public void setValueAt(Object arg0, int row, int column) {
+		mDestNameStrings_[row] = arg0.toString();
 	}
 
 	private void singleTransform() {
