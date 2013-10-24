@@ -223,27 +223,12 @@ public class FileManagerPanel extends JPanel {
 		public void mouseReleased(MouseEvent arg0) {
 		}
 
-		public void expandTree(File path, boolean expanded) {
+		public void expandTree(File path) {
 			if (path == null) {
 				throw new IllegalArgumentException();
 			}
-
-			DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree_
-					.getLastSelectedPathComponent();
 			tree_.expandRow(getMinSelectionRow());
-			if (node == null)
-				return;
-			Object nodeInfo = node.getUserObject();
-			File file = new File(nodeInfo.toString());
-			File[] files = file.listFiles();
-			for (int i = 0; i < files.length; i++) {
-				if (files[i].toString().equals(path.toString())) {
-					break;
-				}
-			}
-			int rows = 0;
-			rows += getMinSelectionRow();
-			tree_.expandRow(rows + 2);
+
 		}
 	}
 }

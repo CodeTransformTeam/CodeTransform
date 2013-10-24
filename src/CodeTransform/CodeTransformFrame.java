@@ -11,7 +11,7 @@ public class CodeTransformFrame extends JFrame {
 	public CodeTransformFrame() throws Exception {
 		// 对frame进行初始化
 		super("代码转换器");
-		setSize(800, 600);
+		setSize(760, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
