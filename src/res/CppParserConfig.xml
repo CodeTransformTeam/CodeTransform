@@ -64,6 +64,7 @@
 		<KeyWord name="goto" />
 		<KeyWord name="reinterpret_cast" />
 		<KeyWord name="try" />
+		<KeyWord name="#include" />
 	</KeyWordSet>   
 	<ColorSet>
 		<Color name="KeyWord" value="#0000FF" />

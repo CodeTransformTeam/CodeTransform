@@ -196,7 +196,10 @@ public class FileListPanel extends JPanel implements MouseListener,
 		if (e.getSource() == this.menuItem_) {
 			int[] indices = list_.getSelectedIndices();
 			File[] files = new File[indices.length];
-
+			for (int i = 0; i < files.length; i++) {
+				files[i] = fileArrayList_.get(indices[i]);
+			}
+			
 			if (indices.length == 1) {
 				SettingFrame settingFrame = new SettingFrame(files[0]);
 				settingFrame.setVisible(true);
