@@ -80,7 +80,7 @@ public class FileListPanel extends JPanel implements MouseListener,
 		int index = list_.locationToIndex(e.getPoint());
 		File file = fileArrayList_.get(index);
 		// 展开左边的节点
-		tree_.expandTree(fileArrayList_.get(index), false);
+		tree_.expandTree(fileArrayList_.get(index));
 
 		if (!file.isFile()) {
 			this.removeAllFiles();

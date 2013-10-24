@@ -25,7 +25,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-
 public class JavaParser extends CodeParser {
 	enum CodeBlock {
 		CodeBlockKeyWord, // 关键字
@@ -492,22 +491,23 @@ public class JavaParser extends CodeParser {
 	boolean hasKeyWord(String string) {
 		for (String keyWorkString : this.keyWordList_) {
 			int index = string.indexOf(keyWorkString);
-			
+
 			if (index >= 0) {
 				Character beforeChar = '\0';
 				if (index > 0) {
 					beforeChar = string.charAt(index - 1);
 				}
-				
+
 				Character nextChar = '\0';
 				if (index + keyWorkString.length() < string.length() - 1) {
 					nextChar = string.charAt(index + 1);
 				}
-				
-				if (Character.isLetterOrDigit(beforeChar) || Character.isLetterOrDigit(nextChar)) {
+
+				if (Character.isLetterOrDigit(beforeChar)
+						|| Character.isLetterOrDigit(nextChar)) {
 					return false;
 				}
-				
+
 				return true;
 			}
 		}
@@ -531,7 +531,24 @@ public class JavaParser extends CodeParser {
 	}
 
 	@Override
-	public void setColor(String key, String value) {
+	public void setColor(String item, String value) {
+		String key = null;
+		if (item.equals("字符")) {
+			key = "Char";
+		} else if (item.equals("文档注释")) {
+			key = "DocumentComment";
+		} else if (item.equals("单行注释")) {
+			key = "LineComment";
+		} else if (item.equals("多行注释")) {
+			key = "MultiLineComment";
+		} else if (item.equals("关键字")) {
+			key = "KeyWord";
+		} else if (item.equals("其他")) {
+			key = "Default";
+		} else {
+			throw new IllegalArgumentException();
+		}
+		
 		Color color = ColorConverter.ColorFromString(value);
 		colorMap_.put(key, color);
 	}
@@ -543,11 +560,11 @@ public class JavaParser extends CodeParser {
 			String[] valuesString = valueString.split(" ");
 			valuesString[4] = text;
 			StringBuffer stringBuffer = new StringBuffer();
-			
+
 			for (int i = 0; i < valuesString.length; i++) {
 				stringBuffer.append(valuesString[i] + " ");
 			}
-			
+
 			valueString = stringBuffer.toString();
 			fontMap_.put(key, valueString);
 		}
@@ -560,13 +577,141 @@ public class JavaParser extends CodeParser {
 			String[] valuesString = valueString.split(" ");
 			valuesString[3] = text;
 			StringBuffer stringBuffer = new StringBuffer();
-			
+
 			for (int i = 0; i < valuesString.length; i++) {
 				stringBuffer.append(valuesString[i] + " ");
 			}
-			
+
 			valueString = stringBuffer.toString();
 			fontMap_.put(key, valueString);
 		}
+	}
+
+	@Override
+	String[] getOptionItems() {
+		String[] itemStrings = { "字符", "文档注释", "单行注释", "多行注释", "关键字", "字符串",
+				"其他" };
+		return itemStrings;
+	}
+
+	@Override
+	Color getItemColor(String item) {
+		if (item.equals("字符")) {
+			return colorMap_.get("Char");
+		} else if (item.equals("文档注释")) {
+			return colorMap_.get("DocumentComment");
+		} else if (item.equals("单行注释")) {
+			return colorMap_.get("LineComment");
+		} else if (item.equals("多行注释")) {
+			return colorMap_.get("MultiLineComment");
+		} else if (item.equals("关键字")) {
+			return colorMap_.get("KeyWord");
+		} else if (item.equals("其他")) {
+			return colorMap_.get("Default");
+		} else {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@Override
+	String getItemFontName(String item) {
+		if (item.equals("字符")) {
+			return fontMap_.get("Char").split(" ")[4];
+		} else if (item.equals("文档注释")) {
+			return fontMap_.get("DocumentComment").split(" ")[4];
+		} else if (item.equals("单行注释")) {
+			return fontMap_.get("LineComment").split(" ")[4];
+		} else if (item.equals("多行注释")) {
+			return fontMap_.get("MultiLineComment").split(" ")[4];
+		} else if (item.equals("关键字")) {
+			return fontMap_.get("KeyWord").split(" ")[4];
+		} else if (item.equals("其他")) {
+			return fontMap_.get("Default").split(" ")[4];
+		} else {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@Override
+	String getItemFontSize(String item) {
+		if (item.equals("字符")) {
+			return fontMap_.get("Char").split(" ")[3];
+		} else if (item.equals("文档注释")) {
+			return fontMap_.get("DocumentComment").split(" ")[3];
+		} else if (item.equals("单行注释")) {
+			return fontMap_.get("LineComment").split(" ")[3];
+		} else if (item.equals("多行注释")) {
+			return fontMap_.get("MultiLineComment").split(" ")[3];
+		} else if (item.equals("关键字")) {
+			return fontMap_.get("KeyWord").split(" ")[3];
+		} else if (item.equals("其他")) {
+			return fontMap_.get("Default").split(" ")[3];
+		} else {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@Override
+	public void setFontName(String item, String text) {
+		String key = null;
+		if (item.equals("字符")) {
+			key = "Char";
+		} else if (item.equals("文档注释")) {
+			key = "DocumentComment";
+		} else if (item.equals("单行注释")) {
+			key = "LineComment";
+		} else if (item.equals("多行注释")) {
+			key = "MultiLineComment";
+		} else if (item.equals("关键字")) {
+			key = "KeyWord";
+		} else if (item.equals("其他")) {
+			key = "Default";
+		} else {
+			throw new IllegalArgumentException();
+		}
+		
+		String valueString = fontMap_.get(key);
+		String[] valuesString = valueString.split(" ");
+		valuesString[4] = text;
+		StringBuffer stringBuffer = new StringBuffer();
+
+		for (int i = 0; i < valuesString.length; i++) {
+			stringBuffer.append(valuesString[i] + " ");
+		}
+
+		valueString = stringBuffer.toString();
+		fontMap_.put(key, valueString);
+	}
+
+	@Override
+	public void setFontSize(String item, String text) {
+		String key = null;
+		if (item.equals("字符")) {
+			key = "Char";
+		} else if (item.equals("文档注释")) {
+			key = "DocumentComment";
+		} else if (item.equals("单行注释")) {
+			key = "LineComment";
+		} else if (item.equals("多行注释")) {
+			key = "MultiLineComment";
+		} else if (item.equals("关键字")) {
+			key = "KeyWord";
+		} else if (item.equals("其他")) {
+			key = "Default";
+		} else {
+			throw new IllegalArgumentException();
+		}
+		
+		String valueString = fontMap_.get(key);
+		String[] valuesString = valueString.split(" ");
+		valuesString[3] = text;
+		StringBuffer stringBuffer = new StringBuffer();
+
+		for (int i = 0; i < valuesString.length; i++) {
+			stringBuffer.append(valuesString[i] + " ");
+		}
+
+		valueString = stringBuffer.toString();
+		fontMap_.put(key, valueString);
 	}
 }

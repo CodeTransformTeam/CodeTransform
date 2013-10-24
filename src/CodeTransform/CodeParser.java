@@ -77,9 +77,10 @@ public abstract class CodeParser {
 	 * 成功，返回字符串数组
 	 * 失败，返回null
 	 */
-	String[] getOptionItems() 	{
-		return new String[]{"关键字", "字符串"};
-	}
+	abstract String[] getOptionItems();
+	abstract Color getItemColor(String item);
+	abstract String getItemFontName(String item);
+	abstract String getItemFontSize(String item);
 	
 	Color getColorByOptionName(String optionString) {
 		return Color.WHITE;
@@ -128,7 +129,10 @@ public abstract class CodeParser {
 		return result;
 	}
 
-	public abstract void setColor(String string, String string2);
+	public abstract void setColor(String key, String value);
+	public abstract void setFontName(String key, String text);
+	public abstract void setFontSize(String key, String text);
+	
 	public abstract void setFontName(String text);
 	public abstract void setFontSize(String text);
 

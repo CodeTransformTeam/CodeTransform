@@ -538,8 +538,143 @@ public class CppParser extends CodeParser {
 	}
 
 	@Override
-	public void setColor(String key, String value) {
+	public void setColor(String item, String value) {
+		String key = null;
+		if (item.equals("字符")) {
+			key = "Char";
+		} else if (item.equals("单行注释")) {
+			key = "LineComment";
+		} else if (item.equals("多行注释")) {
+			key = "MultiLineComment";
+		} else if (item.equals("关键字")) {
+			key = "KeyWord";
+		} else if (item.equals("其他")) {
+			key = "Default";
+		} else {
+			throw new IllegalArgumentException();
+		}
+		
 		Color color = ColorConverter.ColorFromString(value);
 		colorMap_.put(key, color);
+	}
+	
+	@Override
+	String[] getOptionItems() {
+		String[] itemStrings = {"字符", "单行注释", "多行注释", "关键字", "字符串", "其他"};
+			return itemStrings;
+	}
+	
+
+	@Override
+	Color getItemColor(String item) {
+		if (item.equals("字符")) {
+			return colorMap_.get("Char");
+		} else if (item.equals("单行注释")) {
+			return colorMap_.get("LineComment");
+		} else if (item.equals("多行注释")) {
+			return colorMap_.get("MultiLineComment");
+		} else if (item.equals("关键字")) {
+			return colorMap_.get("KeyWord");
+		} else if (item.equals("其他")) {
+			return colorMap_.get("Default");
+		}
+
+		return null;
+	}
+
+	@Override
+	String getItemFontName(String item) {
+		if (item.equals("字符")) {
+			return fontMap_.get("Char").split(" ")[4];
+		} else if (item.equals("单行注释")) {
+			return fontMap_.get("LineComment").split(" ")[4];
+		} else if (item.equals("多行注释")) {
+			return fontMap_.get("MultiLineComment").split(" ")[4];
+		} else if (item.equals("关键字")) {
+			return fontMap_.get("KeyWord").split(" ")[4];
+		} else if (item.equals("其他")) {
+			return fontMap_.get("Default").split(" ")[4];
+		}
+
+		return null;
+	}
+
+	@Override
+	String getItemFontSize(String item) {
+		if (item.equals("字符")) {
+			return fontMap_.get("Char").split(" ")[3];
+		} else if (item.equals("单行注释")) {
+			return fontMap_.get("LineComment").split(" ")[3];
+		} else if (item.equals("多行注释")) {
+			return fontMap_.get("MultiLineComment").split(" ")[3];
+		} else if (item.equals("关键字")) {
+			return fontMap_.get("KeyWord").split(" ")[3];
+		} else if (item.equals("其他")) {
+			return fontMap_.get("Default").split(" ")[3];
+		} else {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@Override
+	public void setFontName(String item, String text) {
+		String key = null;
+		if (item.equals("字符")) {
+			key = "Char";
+		} else if (item.equals("单行注释")) {
+			key = "LineComment";
+		} else if (item.equals("多行注释")) {
+			key = "MultiLineComment";
+		} else if (item.equals("关键字")) {
+			key = "KeyWord";
+		} else if (item.equals("其他")) {
+			key = "Default";
+		} else {
+			throw new IllegalArgumentException();
+		}
+		
+		String valueString = fontMap_.get(key);
+		String[] valuesString = valueString.split(" ");
+		valuesString[4] = text;
+		StringBuffer stringBuffer = new StringBuffer();
+
+		for (int i = 0; i < valuesString.length; i++) {
+			stringBuffer.append(valuesString[i] + " ");
+		}
+
+		valueString = stringBuffer.toString();
+		fontMap_.put(key, valueString);
+	}
+
+	@Override
+	public void setFontSize(String item, String text) {
+		String key = null;
+		if (item.equals("字符")) {
+			key = "Char";
+		} else if (item.equals("文档注释")) {
+			key = "DocumentComment";
+		} else if (item.equals("单行注释")) {
+			key = "LineComment";
+		} else if (item.equals("多行注释")) {
+			key = "MultiLineComment";
+		} else if (item.equals("关键字")) {
+			key = "KeyWord";
+		} else if (item.equals("其他")) {
+			key = "Default";
+		} else {
+			throw new IllegalArgumentException();
+		}
+		
+		String valueString = fontMap_.get(key);
+		String[] valuesString = valueString.split(" ");
+		valuesString[3] = text;
+		StringBuffer stringBuffer = new StringBuffer();
+
+		for (int i = 0; i < valuesString.length; i++) {
+			stringBuffer.append(valuesString[i] + " ");
+		}
+
+		valueString = stringBuffer.toString();
+		fontMap_.put(key, valueString);
 	}
 }
