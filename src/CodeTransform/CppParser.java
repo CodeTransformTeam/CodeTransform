@@ -464,7 +464,23 @@ public class CppParser extends CodeParser {
 
 	boolean hasKeyWord(String string) {
 		for (String keyWorkString : this.keyWordList_) {
-			if (string.indexOf(keyWorkString) >= 0) {
+			int index = string.indexOf(keyWorkString);
+			
+			if (index >= 0) {
+				Character beforeChar = '\0';
+				if (index > 0) {
+					beforeChar = string.charAt(index - 1);
+				}
+				
+				Character nextChar = '\0';
+				if (index + keyWorkString.length() < string.length() - 1) {
+					nextChar = string.charAt(index + 1);
+				}
+				
+				if (Character.isLetterOrDigit(beforeChar) || Character.isLetterOrDigit(nextChar)) {
+					return false;
+				}
+				
 				return true;
 			}
 		}
@@ -485,5 +501,45 @@ public class CppParser extends CodeParser {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void setFontName(String text) {
+		for (String key : fontMap_.keySet()) {
+			String valueString = fontMap_.get(key);
+			String[] valuesString = valueString.split(" ");
+			valuesString[4] = text;
+			StringBuffer stringBuffer = new StringBuffer();
+			
+			for (int i = 0; i < valuesString.length; i++) {
+				stringBuffer.append(valuesString[i] + " ");
+			}
+			
+			valueString = stringBuffer.toString();
+			fontMap_.put(key, valueString);
+		}
+	}
+
+	@Override
+	public void setFontSize(String text) {
+		for (String key : fontMap_.keySet()) {
+			String valueString = fontMap_.get(key);
+			String[] valuesString = valueString.split(" ");
+			valuesString[3] = text;
+			StringBuffer stringBuffer = new StringBuffer();
+			
+			for (int i = 0; i < valuesString.length; i++) {
+				stringBuffer.append(valuesString[i] + " ");
+			}
+			
+			valueString = stringBuffer.toString();
+			fontMap_.put(key, valueString);
+		}
+	}
+
+	@Override
+	public void setColor(String key, String value) {
+		Color color = ColorConverter.ColorFromString(value);
+		colorMap_.put(key, color);
 	}
 }

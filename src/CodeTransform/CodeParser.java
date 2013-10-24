@@ -23,6 +23,31 @@ class ParsedCode	{
 
 public abstract class CodeParser {
 
+	private static String getFilePrefix(File file) {
+		String fileNameString = file.getName();
+		int index = fileNameString.lastIndexOf(".");
+		if (index < 0) {
+			throw new IllegalArgumentException();
+		}
+
+		String prefix = fileNameString.substring(index);
+
+		return prefix;
+	}
+	
+	public static CodeParser codeParserFactory(File file) {
+		CodeParser parser = null;
+		String prefix = getFilePrefix(file);
+		if (prefix.equalsIgnoreCase(".cpp") || prefix.equalsIgnoreCase(".c")
+				|| prefix.equalsIgnoreCase(".h")) {
+			parser = new CppParser();
+		} else if (prefix.equalsIgnoreCase(".java")) {
+			parser = new JavaParser();
+		}
+		parser.init(file);
+		return parser;
+	}
+	
 	/**
 	 * 调用这个方法对 CodeParser 进行初始化
 	 * @param sourceFile
@@ -102,4 +127,9 @@ public abstract class CodeParser {
 		
 		return result;
 	}
+
+	public abstract void setColor(String string, String string2);
+	public abstract void setFontName(String text);
+	public abstract void setFontSize(String text);
+
 }

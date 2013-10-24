@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
+import java.util.Iterator;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -16,6 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -35,7 +37,13 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel, Ac
 	
 	private CodeParser parser_;
 	private File file_;
+	private File[] files_;
+	private String[] outputFileNameStrings_;
 	private JTable table_;
+
+	private JTextField mKeyWordColorTextfield_;
+	private JTextField mFontNameTextfield_;
+	private JTextField mFontSizeTextfield_;
 
 	public SettingFrame(File file) {
 		super("单文件转换设定");
@@ -45,14 +53,7 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel, Ac
 		setLayout(new BorderLayout(10, 10));
 
 		file_ = file;
-
-		String prefix = getFilePrefix(file);
-		if (prefix.equalsIgnoreCase(".cpp") || prefix.equalsIgnoreCase(".c")
-				|| prefix.equalsIgnoreCase(".h")) {
-			parser_ = new CppParser();
-		} else if (prefix.equalsIgnoreCase(".java")) {
-			parser_ = new JavaParser();
-		}
+		parser_ = CodeParser.codeParserFactory(file_);
 
 		createNorthPanel();
 		createCenterPanel();
@@ -61,6 +62,13 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel, Ac
 
 	public SettingFrame(File[] files) {
 		super("多文件转换设定");
+		
+		files_ = files;
+		outputFileNameStrings_ = new String[files.length];
+		for (int i = 0; i < files.length; i++) {
+			outputFileNameStrings_[i] = new String(files[i].getPath() + ".htm");
+		}
+		
 		setSize(600, 450);
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout(10, 10));
@@ -80,9 +88,10 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel, Ac
 		JLabel label = new JLabel("关键字颜色：");
 		southPanel.add(label);
 		
-		JTextField textField = new JTextField("#000000");
+		JTextField textField = new JTextField("#7F0055");
 		textField.setPreferredSize(new Dimension(80, 30));
 		southPanel.add(textField);
+		this.mKeyWordColorTextfield_ = textField;
 		
 		label = new JLabel("字体名称：");
 		southPanel.add(label);
@@ -90,6 +99,7 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel, Ac
 		textField = new JTextField("sans-serif");
 		textField.setPreferredSize(new Dimension(80, 30));
 		southPanel.add(textField);
+		this.mFontNameTextfield_ = textField;
 		
 		label = new JLabel("字体大小：");
 		southPanel.add(label);
@@ -97,6 +107,7 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel, Ac
 		textField = new JTextField("medium");
 		textField.setPreferredSize(new Dimension(80, 30));
 		southPanel.add(textField);
+		this.mFontSizeTextfield_ = textField;
 		
 		JButton transformButton = new JButton("转换");
 		Dimension dimension = transformButton.getPreferredSize();
@@ -236,38 +247,12 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel, Ac
 		southPanel.add(singleTransformButton_);
 	}
 
-	private String getFilePrefix(File file) {
-		String fileNameString = file.getName();
-		int index = fileNameString.lastIndexOf(".");
-		if (index < 0) {
-			throw new IllegalArgumentException();
-		}
-
-		String prefix = fileNameString.substring(index);
-
-		return prefix;
-	}
-
-	public static void main(String[] args) {
-		try {
-			File[] files = new File[2];
-			SettingFrame frame = new SettingFrame(files);
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
 	@Override
 	public void itemStateChanged(ItemEvent arg0) {
-		System.out.println("SettingFrame.itemStateChanged()");
 	}
 
 	@Override
 	public void addTableModelListener(TableModelListener arg0) {
-		System.out.println("SettingFrame.addTableModelListener()");
 	}
 
 	@Override
@@ -288,12 +273,18 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel, Ac
 
 	@Override
 	public int getRowCount() {
-		return 100;
+		return files_.length;
 	}
 
 	@Override
 	public Object getValueAt(int row, int column) {
-		return "OK";
+		if (column == 0) {
+			return files_[row].getPath();
+		} else if (column == 1) {
+			return outputFileNameStrings_[row];
+		} else {
+			throw new IndexOutOfBoundsException();
+		}
 	}
 
 	@Override
@@ -312,12 +303,56 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel, Ac
 	public void setValueAt(Object arg0, int arg1, int arg2) {
 	}
 
+	private void multiTransform() {
+		//多文件转换
+
+		for (int i = 0; i < table_.getRowCount(); i++) {
+			File file = files_[i];
+			
+			CodeParser parser = CodeParser.codeParserFactory(file);
+			
+			parser.setColor("KeyWord", mKeyWordColorTextfield_.getText());
+			parser.setFontName(mFontNameTextfield_.getText());
+			parser.setFontSize(mFontSizeTextfield_.getText());
+			
+			parser.parse();
+			
+			String outputFileNameString = table_.getValueAt(i, 1).toString();
+			File outputFile = new File(outputFileNameString);
+			
+			HTMLWriter htmlWriter = new HTMLWriter(parser);
+			htmlWriter.write(outputFile);
+		}
+		
+		String message = "转换 " + files_.length + " 个文件完成!";
+		JOptionPane.showMessageDialog(this, message);
+	}
+	
+	private void singleTransform() {
+		//单文件转换
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.singleTransformButton_) {
 			System.out.println("单文件转换");
 		} else if (e.getSource() == this.multiTransformButton_) {
 			System.out.println("多文件转换");
+			multiTransform();
 		}
  	}
+	
+	public static void main(String[] args) {
+		try {
+			File[] files = new File[2];
+			files[0] = new File("d:\\temp\\cpptest.cpp");
+			files[1] = new File("d:\\temp\\javatest.java");
+			SettingFrame frame = new SettingFrame(files);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 }

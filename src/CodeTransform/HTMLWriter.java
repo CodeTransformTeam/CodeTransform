@@ -1,5 +1,5 @@
 package CodeTransform;
- 
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class HTMLWriter {
 
 		return src;
 	}
-	
+
 	private void writeBody(FileOutputStream fileOutputStream) {
 		ArrayList<ParsedCode> parsedCodes = parser_.getParserResult();
 		try {
@@ -61,7 +61,9 @@ public class HTMLWriter {
 
 			for (int i = 0; i < parsedCodes.size(); i++) {
 				ParsedCode parsedCode = parsedCodes.get(i);
-				fileOutputStream.write("			<li style=\"border-left: 3px solid #999;\">\r\n".getBytes());
+				fileOutputStream
+						.write("			<li style=\"border-left: 3px solid #999;\">\r\n"
+								.getBytes());
 				String colorString = ColorConverter
 						.Color2String(parsedCode.codeColor_);
 				String fontString = parsedCode.codeFont_;
@@ -70,8 +72,8 @@ public class HTMLWriter {
 				fileOutputStream.write(spanString.getBytes());
 				do {
 					String codeString = parsedCode.codeString_;
-					
-					//检测换行个数，两个以上的话拆分成开
+
+					// 检测换行个数，两个以上的话拆分成开
 					int index = codeString.indexOf("\n");
 					if (index >= 0) {
 						index++;
@@ -82,16 +84,16 @@ public class HTMLWriter {
 							parsedCodeNew.codeColor_ = parsedCode.codeColor_;
 							parsedCodeNew.codeString_ = rightString;
 							parsedCodeNew.codeFont_ = parsedCode.codeFont_;
-							parsedCodes.add(i+1, parsedCodeNew);
-							
+							parsedCodes.add(i + 1, parsedCodeNew);
+
 							String leftString = codeString.substring(0, index);
 							parsedCode.codeString_ = leftString;
 							parsedCodes.set(i, parsedCode);
-							
+
 							codeString = leftString;
 						}
 					}
-					
+
 					codeString = replaceEscapeChars(codeString);
 					fileOutputStream.write(codeString.getBytes());
 
@@ -101,14 +103,16 @@ public class HTMLWriter {
 
 					if (i < parsedCodes.size() - 1) {
 						ParsedCode nextCode = parsedCodes.get(i + 1);
-						if (nextCode.codeColor_.equals(parsedCode.codeColor_) == false
+						if ((nextCode.codeColor_.equals(parsedCode.codeColor_) == false || nextCode.codeFont_
+								.equals(parsedCode.codeFont_))
 								&& nextCode.codeString_.indexOf('\n') < 0) {
 							// 颜色不一样，又不是回车
 							colorString = ColorConverter
 									.Color2String(nextCode.codeColor_);
 							fontString = nextCode.codeFont_;
-							spanString = "</span><span style=\"color:" + colorString
-									+ "; font:" + fontString + "\" >";
+							spanString = "</span><span style=\"color:"
+									+ colorString + "; font:" + fontString
+									+ "\" >";
 							fileOutputStream.write(spanString.getBytes());
 
 							parsedCode = nextCode;
@@ -160,14 +164,21 @@ public class HTMLWriter {
 	/**
 	 * @param args
 	 */
-//	public static void main(String[] args) {
-//		CodeParser parser = new CppParser();
-//		parser.init(new File("temp/cpptest.cpp"));
-//		parser.parse();
-//
-//		HTMLWriter writer = new HTMLWriter(parser);
-//		writer.write(new File("CppTest.html"));
-//
-//	}
+//	 public static void main(String[] args) {
+//	 // CodeParser parser = new CppParser();
+//	 // parser.init(new File("temp/cpptest.cpp"));
+//	 // parser.parse();
+//	 //
+//	 // HTMLWriter writer = new HTMLWriter(parser);
+//	 // writer.write(new File("CppTest.html"));
+//	
+//	 CodeParser parser = new JavaParser();
+//	 parser.init(new File("temp/javatest.java"));
+//	 parser.parse();
+//	
+//	 HTMLWriter writer = new HTMLWriter(parser);
+//	 writer.write(new File("JavaTest.html"));
+//	
+//	 }
 
 }

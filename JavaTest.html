@@ -1,0 +1,705 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JavaTest.html</title>
+</head>
+<body>
+	<div class="code" style="background-color:#E7E5DC">
+		<ol start="1" style="margin:0 0 1px 45px !important;">
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >package</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >CodeTransform;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >import</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >java.io.File;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >import</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >java.io.FileOutputStream;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >import</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >java.util.ArrayList;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >public</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >class</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >HTMLWriter</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >CodeParser</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parser_;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >public</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >HTMLWriter(CodeParser</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parser)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parser_</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parser;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >void</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >write(File</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >file)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >try</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(file.exists()</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >==</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >false)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >file.createNewFile();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >FileOutputStream</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >FileOutputStream(file);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >writeHeader(fileOutputStream,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >file.getName());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >writeBody(fileOutputStream);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >writeFooter(fileOutputStream);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.close();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >catch</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(Exception</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >e)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >e.printStackTrace();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >void</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >writeFooter(FileOutputStream</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >footerString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;/body&gt;\r\n&lt;/html&gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >try</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.write(footerString.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >catch</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(Exception</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >e)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >e.printStackTrace();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >replaceEscapeChars(String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;amp;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;nbsp;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;nbsp;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\t"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;nbsp;&amp;nbsp;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;lt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src.replace(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&amp;gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >return</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >src;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >void</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >writeBody(FileOutputStream</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >ArrayList&lt;ParsedCode&gt;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodes</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parser_.getParserResult();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >try</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&lt;div</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >class=\"code\"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >style=\"background-color:#E7E5DC\"&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&lt;ol</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >start=\"1\"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >style=\"margin:0</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >0</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >1px</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >45px</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >!important;\"&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >for</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >(int</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >i</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >0;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >i</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&lt;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodes.size();</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >i++)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >ParsedCode</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCode</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodes.get(i);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&lt;li&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >colorString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >ColorConverter&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.Color2String(parsedCode.codeColor_);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fontString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCode.codeFont_;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >spanString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&lt;span</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >style=\"color:"</span><span style="color:#000000; font:normal normal normal medium sans-serif" ></span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >colorString&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >";</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >font:"</span><span style="color:#000000; font:normal normal normal medium sans-serif" ></span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fontString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.write(spanString.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >do</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >codeString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCode.codeString_;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >//检测换行个数，两个以上的话拆分成开&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >int</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >index</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >codeString.indexOf(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(index</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&gt;=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >0)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >index++;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(index</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&lt;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >codeString.length())</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >//&nbsp;至少有两个换行&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >rightString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >codeString.substring(index);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >ParsedCode</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodeNew</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >ParsedCode();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodeNew.codeColor_</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCode.codeColor_;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodeNew.codeString_</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >rightString;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodeNew.codeFont_</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCode.codeFont_;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodes.add(i+1,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodeNew);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >leftString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >codeString.substring(0,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >index);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCode.codeString_</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >leftString;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodes.set(i,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCode);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >codeString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >leftString;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >codeString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >replaceEscapeChars(codeString);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.write(codeString.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(codeString.indexOf(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&gt;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >0)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >break;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(i</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&lt;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodes.size()</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >-</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >1)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >ParsedCode</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >nextCode</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodes.get(i</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >1);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(nextCode.codeColor_.equals(parsedCode.codeColor_)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >==</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >false&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&amp;&amp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >nextCode.codeString_.indexOf(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >'\n'</span><span style="color:#000000; font:normal normal normal medium sans-serif" >)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&lt;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >0)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >//&nbsp;颜色不一样，又不是回车&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >colorString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >ColorConverter&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.Color2String(nextCode.codeColor_);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fontString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >nextCode.codeFont_;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >spanString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;/span&gt;&lt;span</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >style=\"color:"</span><span style="color:#000000; font:normal normal normal medium sans-serif" ></span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >colorString&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >";</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >font:"</span><span style="color:#000000; font:normal normal normal medium sans-serif" ></span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fontString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.write(spanString.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCode</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >nextCode;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >++i;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >else</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >if</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(nextCode.codeColor_&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.equals(parsedCode.codeColor_))</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCode</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >nextCode;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >++i;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >else</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCode</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >nextCode;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >++i;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >else</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >break;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >while</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(i</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&lt;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parsedCodes.size());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >spanString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&lt;/span&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.write(spanString.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&lt;/li&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&lt;/ol&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.write(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&lt;/div&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >catch</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(Exception</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >e)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >e.printStackTrace();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >void</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >writeHeader(FileOutputStream</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >title)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >String</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >headerString</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;!DOCTYPE</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >html</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >PUBLIC</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >\"-//W3C//DTD</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >HTML</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >4.01</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >Transitional//EN\"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"\"http:</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >//www.w3.org/TR/html4/loose.dtd\"&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;html&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;head&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;meta</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >http-equiv=\"Content-Type\"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >content=\"text/html;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >charset=UTF-8\"&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;title&gt;"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >title&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;/title&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;/head&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >+</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"&lt;body&gt;\r\n"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >try</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >fileOutputStream.write(headerString.getBytes());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >System.out.println(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"HTMLWriter.writeHeader()"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >catch</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >(Exception</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >e)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >e.printStackTrace();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f9fbf; font:normal normal bold medium sans-serif" >/**&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f9fbf; font:normal normal bold medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f9fbf; font:normal normal bold medium sans-serif" >*</span><span style="color:#7f9fbf; font:normal normal bold medium sans-serif" >&nbsp;</span><span style="color:#7f9fbf; font:normal normal bold medium sans-serif" >@param</span><span style="color:#7f9fbf; font:normal normal bold medium sans-serif" >&nbsp;</span><span style="color:#7f9fbf; font:normal normal bold medium sans-serif" >args&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f9fbf; font:normal normal bold medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f9fbf; font:normal normal bold medium sans-serif" >*/&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >public</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >static</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >void</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >main(String[]</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >args)</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >JavaParser</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parser</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >JavaParser();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >parser.init(new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >File(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"temp/javatest.java"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >));&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >parser.parse();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >HTMLWriter</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >writer</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >HTMLWriter(parser);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >writer.write(new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >File(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"Test.html"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >));&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+		</ol>
+	</div>
+</body>
+</html>
