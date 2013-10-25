@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CodeTransformFrame.java.htm</title>
+</head>
+<body>
+	<div class="code" style="background-color:#E7E5DC">
+		<ol start="1" style="margin:0 0 1px 45px !important;">
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >package</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >CodeTransform;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >import</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >java.awt.*;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >import</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >javax.swing.*;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#7f0055; font:normal normal bold medium sans-serif" >public</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >class</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >CodeTransformFrame</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >extends</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >JFrame</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >//&nbsp;这个东西是给&nbsp;序列化&nbsp;校验用的&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >static</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >final</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >long</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >serialVersionUID</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >1L;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >private</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >FileManagerPanel</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >topFileManagerPanel_</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >=</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >FileManagerPanel();&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >public</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >CodeTransformFrame()</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >throws</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >Exception</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >{&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >//</span><span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >&nbsp;对</span><span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >frame进行初始化&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#3f7f5f; font:italic normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >super(</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >代码转换器</span><span style="color:#0000c0; font:normal normal normal medium sans-serif" >"</span><span style="color:#000000; font:normal normal normal medium sans-serif" >);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >setSize(760,</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >600);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >setLocationRelativeTo(null);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >setResizable(false);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#7f0055; font:normal normal bold medium sans-serif" >setLayout(new</span><span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >BorderLayout());&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >add(topFileManagerPanel_,BorderLayout.CENTER);&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >&nbsp;
+				</span>
+			</li>
+			<li style="border-left: 3px solid #999;">
+				<span style="color:#000000; font:normal normal normal medium sans-serif" >}&nbsp;
+				</span>
+			</li>
+		</ol>
+	</div>
+</body>
+</html>
