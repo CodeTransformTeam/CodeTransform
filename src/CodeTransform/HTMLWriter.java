@@ -164,21 +164,21 @@ public class HTMLWriter {
 	/**
 	 * @param args
 	 */
-//	 public static void main(String[] args) {
-//	 // CodeParser parser = new CppParser();
-//	 // parser.init(new File("temp/cpptest.cpp"));
-//	 // parser.parse();
-//	 //
-//	 // HTMLWriter writer = new HTMLWriter(parser);
-//	 // writer.write(new File("CppTest.html"));
-//	
+	 public static void main(String[] args) {
+	  CodeParser parser = new CppParser();
+	  parser.init(new File("temp/cpptest.cpp"));
+	  parser.parse();
+	 
+	  HTMLWriter writer = new HTMLWriter(parser);
+	  writer.write(new File("CppTest.html"));
+	
 //	 CodeParser parser = new JavaParser();
 //	 parser.init(new File("temp/javatest.java"));
 //	 parser.parse();
 //	
 //	 HTMLWriter writer = new HTMLWriter(parser);
 //	 writer.write(new File("JavaTest.html"));
-//	
-//	 }
+	
+	 }
 
 }

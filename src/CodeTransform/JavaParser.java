@@ -500,7 +500,7 @@ public class JavaParser extends CodeParser {
 
 				Character nextChar = '\0';
 				if (index + keyWorkString.length() < string.length() - 1) {
-					nextChar = string.charAt(index + 1);
+					nextChar = string.charAt(index + keyWorkString.length());
 				}
 
 				if (Character.isLetterOrDigit(beforeChar)
