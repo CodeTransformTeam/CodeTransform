@@ -388,6 +388,9 @@ public class SettingFrame extends JFrame implements ItemListener, TableModel,
 
 		HTMLWriter htmlWriter = new HTMLWriter(parser_);
 		htmlWriter.write(outputFile);
+		
+		String message = "文件转换完成!";
+		JOptionPane.showMessageDialog(this, message);
 	}
 
 	private void multiTransform() {

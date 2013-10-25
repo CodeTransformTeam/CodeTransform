@@ -515,20 +515,20 @@ public class JavaParser extends CodeParser {
 		return false;
 	}
 
-	public static void main(String[] args) {
-		try {
-			JavaParser parser = new JavaParser();
-			parser.init(new File("temp/javatest.java"));
-			parser.parse();
-			ArrayList<ParsedCode> resultArrayList = parser.getParserResult();
-			for (int i = 0; i < resultArrayList.size(); i++) {
-				System.out.println("i = " + i + ": ---------------------【"
-						+ resultArrayList.get(i) + "】----------------");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		try {
+//			JavaParser parser = new JavaParser();
+//			parser.init(new File("temp/javatest.java"));
+//			parser.parse();
+//			ArrayList<ParsedCode> resultArrayList = parser.getParserResult();
+//			for (int i = 0; i < resultArrayList.size(); i++) {
+//				System.out.println("i = " + i + ": ---------------------【"
+//						+ resultArrayList.get(i) + "】----------------");
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	@Override
 	public void setColor(String item, String value) {
